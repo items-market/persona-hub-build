@@ -343,10 +343,10 @@ function Index() {
               Launching, scaling, or repositioning a web3 project? Slide into the DMs.
             </p>
           </div>
-          <div className="mt-10 grid sm:grid-cols-3 gap-5">
+          <div className="mt-10 flex flex-wrap justify-center gap-5 max-w-2xl mx-auto">
             {links.map((l) => (
               <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
-                className={`pixel-box p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color}`}>
+                className={`pixel-box p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color} w-full sm:w-auto min-w-[200px]`}>
                 <div className="font-display text-[10px]">{l.label}</div>
                 <div className="mt-3 font-mono text-xl truncate">{l.handle} →</div>
               </a>
