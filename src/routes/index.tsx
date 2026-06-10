@@ -176,7 +176,7 @@ function Index() {
                 <span className="absolute inline-flex h-full w-full  bg-accent-2 opacity-75 animate-ping" />
                 <span className="relative inline-flex h-2 w-2  bg-accent-2" />
               </span>
-              Online · Open for collabs
+              ► PLAYER 1 READY · OPEN FOR COLLABS
             </div>
             <h1 className="font-display font-semibold tracking-tight text-[clamp(2.1rem,7vw,4.25rem)] leading-[1.02]">
               Crypto KOL.<br />
@@ -339,7 +339,7 @@ function Index() {
             <div className="relative text-center max-w-2xl mx-auto">
               <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Let's talk</div>
               <h2 className="mt-3 font-display font-semibold text-3xl sm:text-5xl leading-tight">
-                Ready to grow?
+                READY PLAYER 2?
               </h2>
               <p className="mt-4 text-base sm:text-lg text-fg/70">
                 Launching, scaling, or repositioning a web3 project? Slide into the DMs.
@@ -373,7 +373,7 @@ function Index() {
           <span>© 2026 Zane · {PROFILE.handle}</span>
           <span className="flex items-center gap-2 font-mono">
             <span className="h-1.5 w-1.5  bg-accent-2 animate-pulse" />
-            Community · Influence · Trust
+            COMMUNITY · INFLUENCE · TRUST
           </span>
         </div>
       </footer>
