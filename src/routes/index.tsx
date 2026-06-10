@@ -5,9 +5,9 @@ import zaneAvatar from "@/assets/zane.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Zane · @0xZane_ — Crypto KOL · Web3 Growth" },
-      { name: "description", content: "Crypto KOL helping web3 projects grow through community, threads, raids and real influence on X." },
-      { property: "og:title", content: "Zane · @0xZane_ — Crypto KOL" },
+      { title: "Zane · @0xZane_ — Web3 Growth · Community Builder" },
+      { name: "description", content: "Helping web3 projects grow through community, threads, raids and real influence on X." },
+      { property: "og:title", content: "Zane · @0xZane_ — Web3 Growth" },
       { property: "og:description", content: "Helping web3 projects grow through community & influence." },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -31,9 +31,9 @@ const PROFILE = {
 
 const services = [
   { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦", color: "bg-accent-1" },
-  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "◇", color: "bg-accent-2" },
+  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "⚡", color: "bg-accent-2" },
   { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎", color: "bg-accent-3 text-card" },
-  { title: "Launch Support",   desc: "End-to-end web3 KOL rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "▲", color: "bg-card" },
+  { title: "Launch Support",   desc: "End-to-end web3 growth rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "☄", color: "bg-card" },
 ];
 
 const verticals = [
@@ -107,7 +107,7 @@ function Index() {
         <div className="flex animate-marquee whitespace-nowrap font-display text-[10px] sm:text-xs py-2">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex shrink-0 items-center">
-              {["► THREADS", "★ RAIDS", "◇ SPACES", "▲ LAUNCHES", "● COMMUNITY", "■ NARRATIVE", "✦ HOLDERS", "◎ TRUST"].map((t) => (
+              {["► THREADS", "★ RAIDS", "◇ SPACES", "✦ HOLDERS", "◎ TRUST"].map((t) => (
                 <span key={t + k} className="mx-6 flex items-center gap-3">
                   <span className="text-accent-1">{t}</span>
                   <span className="text-accent-3">/</span>
@@ -203,7 +203,7 @@ function Index() {
           <div className="space-y-5 text-lg sm:text-xl leading-snug">
             <p>
               I'm <span className="hl-yellow font-mono">@0xZane_</span> — a{" "}
-              <span className="hl-green font-mono">crypto KOL on X</span> covering web3, RWAs, AI×crypto, security, and yield.
+              <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
             </p>
             <p>
               I work with founders to shape narrative, drive attention, and bring{" "}
