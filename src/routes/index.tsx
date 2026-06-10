@@ -30,10 +30,10 @@ const PROFILE = {
 };
 
 const services = [
-  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦", color: "bg-accent-1" },
-  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "⚡", color: "bg-accent-2" },
-  { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎", color: "bg-accent-3 text-card" },
-  { title: "Launch Support",   desc: "End-to-end web3 growth rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "☄", color: "bg-card" },
+  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "threads", color: "bg-accent-1" },
+  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "raids", color: "bg-accent-2" },
+  { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "spaces", color: "bg-accent-3 text-card" },
+  { title: "Launch Support",   desc: "End-to-end web3 growth rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "launch", color: "bg-card" },
 ];
 
 const verticals = [
@@ -50,6 +50,68 @@ const links = [
   { label: "TELEGRAM",    handle: "DM for collabs", href: "https://t.me/",          color: "bg-accent-2" },
   { label: "EMAIL",       handle: "gm@zane.web3",   href: "mailto:gm@zane.web3",    color: "bg-accent-3 text-card" },
 ];
+
+function PixelIcon({ type }: { type: string }) {
+  const fill = "currentColor";
+  const off = "transparent";
+  if (type === "threads") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="2" y="1" width="12" height="14" fill={fill} />
+        <rect x="3" y="2" width="10" height="12" fill={off} />
+        <rect x="4" y="3" width="8" height="1" fill={fill} />
+        <rect x="4" y="5" width="6" height="1" fill={fill} />
+        <rect x="4" y="7" width="8" height="1" fill={fill} />
+        <rect x="4" y="9" width="5" height="1" fill={fill} />
+        <rect x="4" y="11" width="7" height="1" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "raids") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="7" y="1" width="2" height="3" fill={fill} />
+        <rect x="5" y="3" width="6" height="2" fill={fill} />
+        <rect x="3" y="5" width="10" height="2" fill={fill} />
+        <rect x="5" y="7" width="2" height="2" fill={fill} />
+        <rect x="9" y="7" width="2" height="2" fill={fill} />
+        <rect x="7" y="9" width="2" height="2" fill={fill} />
+        <rect x="4" y="11" width="8" height="2" fill={fill} />
+        <rect x="3" y="13" width="10" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "spaces") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="6" y="1" width="4" height="2" fill={fill} />
+        <rect x="5" y="3" width="6" height="1" fill={fill} />
+        <rect x="4" y="4" width="8" height="2" fill={fill} />
+        <rect x="3" y="6" width="10" height="4" fill={fill} />
+        <rect x="4" y="10" width="8" height="2" fill={fill} />
+        <rect x="5" y="12" width="6" height="1" fill={fill} />
+        <rect x="6" y="13" width="4" height="1" fill={fill} />
+        <rect x="7" y="14" width="2" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "launch") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="7" y="1" width="2" height="2" fill={fill} />
+        <rect x="6" y="3" width="4" height="2" fill={fill} />
+        <rect x="5" y="5" width="6" height="4" fill={fill} />
+        <rect x="6" y="9" width="1" height="3" fill={fill} />
+        <rect x="9" y="9" width="1" height="3" fill={fill} />
+        <rect x="5" y="12" width="2" height="2" fill={fill} />
+        <rect x="9" y="12" width="2" height="2" fill={fill} />
+        <rect x="4" y="14" width="2" height="2" fill={fill} />
+        <rect x="10" y="14" width="2" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  return null;
+}
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -209,7 +271,7 @@ function Index() {
             {services.map((s, i) => (
               <article key={s.title} className="pixel-box p-5 sm:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-display text-3xl sm:text-4xl leading-none text-accent-3">{s.icon}</span>
+                  <PixelIcon type={s.icon} />
                   <span className="font-display text-xs opacity-60">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-sm sm:text-base mb-3">{s.title.toUpperCase()}</h3>
