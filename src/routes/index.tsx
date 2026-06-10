@@ -130,7 +130,7 @@ function PixelIcon({ type }: { type: string }) {
   };
   const grid = MAPS[type];
   if (!grid) return null;
-  const rects: React.ReactElement[] = [];
+  const rects: ReactElement[] = [];
   for (let y = 0; y < 16; y++) {
     for (let x = 0; x < 16; x++) {
       if (grid[y][x] === "#") {
