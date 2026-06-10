@@ -242,42 +242,11 @@ function Index() {
         </div>
       </section>
 
-      {/* RECENT POSTS */}
-      <section id="posts" className="border-y-4 border-foreground bg-foreground text-background">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
-          <div className="flex items-end justify-between mb-6 sm:mb-8 flex-wrap gap-4">
-            <div>
-              <div className="pixel text-[10px] bg-coin text-foreground inline-block px-3 py-2">// LATEST FROM X</div>
-              <h2 className="pixel text-lg sm:text-xl md:text-2xl mt-4">RECENT THREADS</h2>
-            </div>
-            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer" className="pixel text-[10px] bg-hot text-primary-foreground px-3 py-2 pixel-border-sm">SEE ALL ON X →</a>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-5">
-            {posts.map((p, i) => (
-              <a
-                key={p.url}
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
-                className={`block pixel-border p-5 sm:p-6 hover:-translate-y-1 active:translate-y-0 transition-transform text-foreground ${i % 3 === 0 ? "bg-coin" : i % 3 === 1 ? "bg-mint" : "bg-card"} ${i === posts.length - 1 ? "md:col-span-2" : ""}`}
-              >
-                <div className="flex items-start justify-between gap-3 mb-3 pixel text-[9px] sm:text-[10px]">
-                  <span className="bg-foreground text-background px-2 py-1">{p.tag}</span>
-                  <span className="truncate">{p.date}</span>
-                </div>
-                <p className="text-base sm:text-lg leading-snug">{p.text}</p>
-                <div className="mt-4 flex items-center justify-between pixel text-[9px] sm:text-[10px]">
-                  <span>♥ {p.likes} LIKES</span>
-                  <span>READ ON X →</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* PROJECTS COVERED */}
-      <section id="projects" className="bg-sky">
+      <section id="projects" className="border-y-4 border-foreground bg-sky">
         <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
           <div className="text-center mb-8 sm:mb-10">
             <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// COVERED RECENTLY</div>
