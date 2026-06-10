@@ -54,7 +54,7 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  html, body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
   ::selection { background: color-mix(in oklab, var(--accent-1) 40%, transparent); color: var(--fg); }
 }
 
@@ -69,6 +69,10 @@
   }
   @keyframes float-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
   @keyframes fade-in { from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:translateY(0)} }
+  @keyframes glow-pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+  @keyframes orbit { from{transform:rotate(0deg) translateX(12px) rotate(0deg)} to{transform:rotate(360deg) translateX(12px) rotate(-360deg)} }
   .animate-float { animation: float-y 3.5s ease-in-out infinite; }
   .animate-fade-in { animation: fade-in 0.2s ease-out; }
+  .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+  .animate-orbit { animation: orbit 8s linear infinite; }
 }
