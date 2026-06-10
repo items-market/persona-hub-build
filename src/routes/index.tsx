@@ -47,8 +47,8 @@ const verticals = [
 
 const links = [
   { label: "X / TWITTER", handle: "@0xZane_",       href: "https://x.com/0xZane_",  color: "bg-accent-1" },
-  { label: "TELEGRAM",    handle: "DM for collabs", href: "https://t.me/",          color: "bg-accent-2" },
-  { label: "EMAIL",       handle: "gm@zane.web3",   href: "mailto:gm@zane.web3",    color: "bg-accent-3 text-card" },
+  { label: "TELEGRAM",    handle: "@Hey_Zane",      href: "https://t.me/Hey_Zane",   color: "bg-accent-2" },
+  { label: "EMAIL",       handle: "heyzane1337@gmail.com",   href: "mailto:heyzane1337@gmail.com",    color: "bg-accent-3 text-card" },
 ];
 
 function PixelIcon({ type }: { type: string }) {
@@ -339,7 +339,7 @@ function Index() {
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
           <div className="text-center max-w-2xl mx-auto">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// LET'S TALK</div>
-            <h2 className="mt-5 font-display text-2xl sm:text-4xl">READY PLAYER 2?</h2>
+            <h2 className="mt-5 font-display text-2xl sm:text-4xl">READY TO BUILD?</h2>
             <p className="mt-5 text-lg sm:text-xl">
               Launching, scaling, or repositioning a web3 project? Slide into the DMs.
             </p>
@@ -359,7 +359,7 @@ function Index() {
       {/* FOOTER */}
       <footer className="bg-fg text-card">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-display text-[10px]">
-          <span>© 2026 ZANE · {PROFILE.handle}</span>
+          <span>© 2026 ZANE</span>
           <span className="flex items-center gap-2">
             <span className="h-2 w-2 bg-accent-2 animate-blink" />
             COMMUNITY · INFLUENCE · TRUST
