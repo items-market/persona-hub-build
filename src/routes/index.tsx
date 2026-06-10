@@ -32,15 +32,6 @@ const PROFILE = {
   verified: true,
 };
 
-const ticker = [
-  "★ BOOKING WEB3 CAMPAIGNS",
-  "GM ☀️",
-  "FULLTIME ON WEB3",
-  "VIBE CODER",
-  "DM OPEN FOR COLLABS",
-  "★ REAL HOLDERS · REAL REACH",
-  "@0xZane_",
-];
 
 const stats = [
   { k: "FOLLOWERS", v: "14.6K" },
@@ -65,43 +56,6 @@ const covered = [
   { name: "9SUMMITS", tag: "Curated risk-adjusted vaults" },
 ];
 
-const posts = [
-  {
-    url: "https://x.com/0xZane_/status/2064686365091274831",
-    date: "JUN 10 · 2026",
-    text: "The @flintrwa is live on @lagoon_finance. Dive into real estate-backed opportunities with just USDC. ~10% target APR, weekly distributions, ERC-7540 infra, Merkl boosts. $495.36K already in — no middlemen, just bricks on the blockchain.",
-    likes: 37,
-    tag: "RWA",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064591197914685722",
-    date: "JUN 10 · 2026",
-    text: "Quantum risk isn't sci-fi anymore. Even BlackRock's talking about it. @quipnetwork uses hybrid WOTS+ / SPHINCS+ aligned with NIST-PQC standards. For those securing billions, waiting isn't an option.",
-    likes: 144,
-    tag: "SECURITY",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064419604907385031",
-    date: "JUN 9 · 2026",
-    text: "Dreaming of the British Grand Prix? Swap $5k into AVLT via @alturax × Jumper — VIP Silverstone life, F1 stars, Fusion Lounge access. Lock $5k+ by Sunday for the snapshot.",
-    likes: 133,
-    tag: "CAMPAIGN",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064376596736405880",
-    date: "JUN 9 · 2026",
-    text: "AI changed personal productivity. Now think bigger: AI co-workers for whole companies. @workclaw — teammates with titles, 3,000+ integrations, runs inside Slack & Teams. 2026 is about who's got the best AI team.",
-    likes: 37,
-    tag: "AI x WEB3",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064363880487452930",
-    date: "JUN 9 · 2026",
-    text: "Altura Epoch 5 is up. 100,000 $AVLT reward pool on YieldRun. Deposit, earn yield on Hyperliquid strategies, climb the leaderboard. No constant managing — just stay active and track progress.",
-    likes: 28,
-    tag: "YIELD",
-  },
-];
 
 const testimonials = [
   { quote: "Brought us real holders, not bots. The thread alone moved volume.", who: "WEB3 FOUNDER" },
