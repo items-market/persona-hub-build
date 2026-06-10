@@ -272,14 +272,30 @@ function Index() {
         </div>
       </section>
 
+      {/* MARQUEE TICKER */}
+      <div className="bg-fg text-card border-y-[3px] border-fg overflow-hidden py-3">
+        <div className="flex whitespace-nowrap animate-marquee font-display text-xs sm:text-sm">
+          {Array.from({ length: 2 }).map((_, j) => (
+            <div key={j} className="flex shrink-0">
+              {["► THREADS", "★ RAIDS", "◆ SPACES", "▲ LAUNCHES", "● COMMUNITY", "✦ INFLUENCE", "► TRUST", "★ SIGNAL"].map((t, i) => (
+                <span key={`${j}-${i}`} className="px-6 flex items-center gap-3">
+                  <span className="text-accent-1">{t}</span>
+                  <span className="text-accent-3">//</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ABOUT — cream band */}
       <section id="about" className="bg-cream border-y-[3px] border-fg">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16 lg:gap-24">
-          <div className="reveal">
+          <div className="reveal-left">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// ABOUT</div>
             <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight">WHO IS<br />ZANE?</h2>
           </div>
-          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug reveal" data-reveal-delay="150ms">
+          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug reveal-right" data-reveal-delay="150ms">
             <p>
               I'm <span className="hl-yellow font-mono">Zane</span> — a{" "}
               <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
