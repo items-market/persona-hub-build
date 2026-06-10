@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
 const PROFILE = {
   name: "ZANE",
   handle: "@0xZane_",
-  bio: "tech enthusiast · fulltimeonweb3 · vibe coder",
+  bio: "",
 };
 
 const services = [
@@ -68,7 +68,7 @@ function Index() {
           <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3">
             <span className="shrink-0 inline-block h-7 w-7 sm:h-8 sm:w-8 bg-accent-3 border-[3px] border-fg" />
             <span className="font-display text-[11px] sm:text-sm truncate">
-              ZANE <span className="opacity-60">· {PROFILE.handle}</span>
+              ZANE
             </span>
           </a>
           <nav className="hidden md:flex items-center gap-7 font-display text-[11px] uppercase">
@@ -102,21 +102,6 @@ function Index() {
         )}
       </header>
 
-      {/* MARQUEE TICKER */}
-      <div className="bg-fg text-card border-b-[3px] border-fg overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap font-display text-[10px] sm:text-xs py-2">
-          {Array.from({ length: 2 }).map((_, k) => (
-            <span key={k} className="flex shrink-0 items-center">
-              {["► THREADS", "★ RAIDS", "◇ SPACES", "✦ HOLDERS", "◎ TRUST"].map((t) => (
-                <span key={t + k} className="mx-6 flex items-center gap-3">
-                  <span className="text-accent-1">{t}</span>
-                  <span className="text-accent-3">/</span>
-                </span>
-              ))}
-            </span>
-          ))}
-        </div>
-      </div>
 
 
       {/* HERO */}
@@ -144,7 +129,7 @@ function Index() {
               PROJECTS<span className="animate-blink text-accent-3">_</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg sm:text-xl leading-snug">
-              {PROFILE.bio}. I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
+              I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
@@ -173,9 +158,6 @@ function Index() {
               {/* image */}
               <div className="relative bg-bg p-3">
                 <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
-                <span className="absolute top-5 right-5 bg-card border-[3px] border-fg px-2 py-1 font-display text-[9px]">
-                  ✓ VERIFIED
-                </span>
               </div>
               {/* chips row */}
               <div className="grid grid-cols-3 gap-2 p-3 pt-0">
@@ -185,8 +167,8 @@ function Index() {
               </div>
               {/* footer */}
               <div className="flex items-center justify-between px-3 py-2 border-t-[3px] border-fg bg-card">
-                <span className="font-mono text-base truncate">{PROFILE.handle}</span>
-                <span className="font-display text-[10px] bg-fg text-card px-2 py-1">PARTNER</span>
+                <span className="font-mono text-base truncate">Zane</span>
+                <span className="font-display text-[10px] bg-fg text-card px-2 py-1">GROWTH PARTNER</span>
               </div>
             </div>
           </div>
@@ -202,14 +184,13 @@ function Index() {
           </div>
           <div className="space-y-5 text-lg sm:text-xl leading-snug">
             <p>
-              I'm <span className="hl-yellow font-mono">@0xZane_</span> — a{" "}
+              I'm <span className="hl-yellow font-mono">Zane</span> — a{" "}
               <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
             </p>
             <p>
               I work with founders to shape narrative, drive attention, and bring{" "}
               <span className="hl-red font-mono">real holders</span> instead of bots. Every campaign starts with the product — never the hype.
             </p>
-            <p className="font-display text-xs sm:text-sm text-accent-3">"TECH ENTHUSIAST · FULLTIMEONWEB3 · VIBE CODER"</p>
           </div>
         </div>
       </section>
