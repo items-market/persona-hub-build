@@ -208,29 +208,29 @@ function Index() {
         <span className="hidden md:block absolute top-[70%] right-[50%] h-3 w-3 rounded-full bg-card border-[3px] border-fg" />
         <span className="hidden lg:block absolute top-[55%] right-[2%] h-5 w-5 rounded-full bg-card border-[3px] border-fg" />
 
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 pt-10 sm:pt-16 pb-14 sm:pb-20 grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-12 items-center">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 pt-10 sm:pt-16 lg:pt-24 pb-14 sm:pb-20 lg:pb-28 grid md:grid-cols-[1.15fr_1fr] lg:grid-cols-[1.3fr_1fr] gap-10 md:gap-12 lg:gap-20 items-center">
           <div className="order-2 md:order-1 relative z-10">
             <div className="inline-flex items-center gap-2 bg-fg text-card px-3 py-2 font-display text-[10px] sm:text-xs mb-6 border-[3px] border-fg">
               <span className="h-2 w-2 bg-accent-2 animate-blink" />
               ► ONLINE · OPEN FOR COLLABS
             </div>
-            <h1 className="font-display text-[clamp(1.7rem,6.2vw,3.4rem)] leading-[1.15]">
+            <h1 className="font-display text-[clamp(1.7rem,5vw,3rem)] lg:text-[clamp(2.2rem,4.2vw,3.6rem)] leading-[1.15]">
               I GROW<br />
               <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle" key={wordIdx}>
                 {words[wordIdx]}
               </span><br />
               PROJECTS<span className="animate-blink text-accent-3">_</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg sm:text-xl leading-snug">
+            <p className="mt-6 max-w-xl lg:max-w-2xl text-lg sm:text-xl lg:text-2xl leading-snug">
               I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
-                className="font-display text-xs sm:text-sm bg-accent-3 text-card px-5 sm:px-6 py-3 sm:py-4 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                className="font-display text-xs sm:text-sm lg:text-base bg-accent-3 text-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
                 ► FOLLOW ME
               </a>
               <a href="#contact"
-                className="font-display text-xs sm:text-sm bg-card px-5 sm:px-6 py-3 sm:py-4 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                className="font-display text-xs sm:text-sm lg:text-base bg-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
                 WORK WITH ME
               </a>
             </div>
@@ -238,14 +238,14 @@ function Index() {
 
           {/* avatar window */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="w-[min(86vw,360px)] pixel-box p-0">
+            <div className="w-[min(86vw,360px)] lg:w-[min(90vw,420px)] xl:w-[min(92vw,480px)] pixel-box p-0">
               {/* window chrome */}
               <div className="flex items-center justify-between gap-3 px-3 py-2 border-b-[3px] border-fg bg-card">
-                <span className="font-mono text-sm">ZANE.PNG</span>
+                <span className="font-mono text-sm lg:text-base">ZANE.PNG</span>
                 <span className="flex items-center gap-1.5">
-                  <span className="h-3 w-3 bg-accent-2 border-2 border-fg" />
-                  <span className="h-3 w-3 bg-accent-1 border-2 border-fg" />
-                  <span className="h-3 w-3 bg-accent-3 border-2 border-fg" />
+                  <span className="h-3 w-3 lg:h-4 lg:w-4 bg-accent-2 border-2 border-fg" />
+                  <span className="h-3 w-3 lg:h-4 lg:w-4 bg-accent-1 border-2 border-fg" />
+                  <span className="h-3 w-3 lg:h-4 lg:w-4 bg-accent-3 border-2 border-fg" />
                 </span>
               </div>
               {/* image */}
@@ -254,14 +254,14 @@ function Index() {
               </div>
               {/* chips row */}
               <div className="grid grid-cols-3 gap-2 p-3 pt-0">
-                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] py-2">REACH</span>
-                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] py-2">TRUST</span>
-                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] py-2">SIGNAL</span>
+                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">REACH</span>
+                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">TRUST</span>
+                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">SIGNAL</span>
               </div>
               {/* footer */}
               <div className="flex items-center justify-between px-3 py-2 border-t-[3px] border-fg bg-card">
-                <span className="font-mono text-base truncate">Zane</span>
-                <span className="font-display text-[10px] bg-fg text-card px-2 py-1">GROWTH PARTNER</span>
+                <span className="font-mono text-base lg:text-lg truncate">Zane</span>
+                <span className="font-display text-[10px] lg:text-xs bg-fg text-card px-2 py-1">GROWTH PARTNER</span>
               </div>
             </div>
           </div>
@@ -270,12 +270,12 @@ function Index() {
 
       {/* ABOUT — cream band */}
       <section id="about" className="bg-cream border-y-[3px] border-fg">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16 lg:gap-24">
           <div>
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// ABOUT</div>
-            <h2 className="mt-5 font-display text-2xl sm:text-3xl leading-tight">WHO IS<br />ZANE?</h2>
+            <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight">WHO IS<br />ZANE?</h2>
           </div>
-          <div className="space-y-5 text-lg sm:text-xl leading-snug">
+          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug">
             <p>
               I'm <span className="hl-yellow font-mono">Zane</span> — a{" "}
               <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
@@ -290,23 +290,23 @@ function Index() {
 
       {/* SERVICES */}
       <section id="services" className="border-b-[3px] border-fg">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>
               <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// SERVICES</div>
-              <h2 className="mt-5 font-display text-2xl sm:text-3xl leading-tight">HOW I HELP<br />YOU GROW</h2>
+              <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight">HOW I HELP<br />YOU GROW</h2>
             </div>
-            <p className="text-lg sm:text-xl max-w-sm">Pick one or stack them for a full launch. Every engagement is custom-scoped.</p>
+            <p className="text-lg sm:text-xl lg:text-2xl max-w-sm lg:max-w-md">Pick one or stack them for a full launch. Every engagement is custom-scoped.</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-5 sm:gap-7">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-7">
             {services.map((s, i) => (
-              <article key={s.title} className="pixel-box p-5 sm:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+              <article key={s.title} className="pixel-box p-5 sm:p-6 lg:p-8 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
                 <div className="flex items-center justify-between mb-4">
                   <PixelIcon type={s.icon} />
                   <span className="font-display text-xs opacity-60">0{i + 1}</span>
                 </div>
-                <h3 className="font-display text-sm sm:text-base mb-3">{s.title.toUpperCase()}</h3>
-                <p className="text-lg leading-snug">{s.desc}</p>
+                <h3 className="font-display text-sm sm:text-base lg:text-lg mb-3">{s.title.toUpperCase()}</h3>
+                <p className="text-lg lg:text-xl leading-snug">{s.desc}</p>
               </article>
             ))}
           </div>
@@ -315,16 +315,16 @@ function Index() {
 
       {/* VERTICALS */}
       <section id="verticals" className="bg-cream border-b-[3px] border-fg">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32">
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// COVERAGE</div>
-            <h2 className="mt-5 font-display text-2xl sm:text-3xl">VERTICALS I COVER</h2>
+            <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl">VERTICALS I COVER</h2>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-5">
             {verticals.map((v) => (
-              <div key={v.name} className="pixel-box-sm p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
-                <div className="font-display text-sm text-accent-3">{v.name}</div>
-                <p className="mt-2 text-lg leading-snug">{v.desc}</p>
+              <div key={v.name} className="pixel-box-sm p-5 lg:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+                <div className="font-display text-sm lg:text-base text-accent-3">{v.name}</div>
+                <p className="mt-2 text-lg lg:text-xl leading-snug">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -335,20 +335,20 @@ function Index() {
       <section id="contact" className="border-b-[3px] border-fg relative overflow-hidden">
         <span className="hidden sm:block absolute top-10 left-[10%] h-8 w-8 rounded-full bg-accent-1 border-[3px] border-fg animate-float" />
         <span className="hidden sm:block absolute bottom-10 right-[12%] h-6 w-6 rounded-full bg-accent-3 border-[3px] border-fg animate-float" style={{ animationDelay: "0.5s" }} />
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
-          <div className="text-center max-w-2xl mx-auto">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32">
+          <div className="text-center max-w-2xl lg:max-w-3xl mx-auto">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// LET'S TALK</div>
-            <h2 className="mt-5 font-display text-2xl sm:text-4xl">READY TO BUILD?</h2>
-            <p className="mt-5 text-lg sm:text-xl">
+            <h2 className="mt-5 font-display text-2xl sm:text-4xl lg:text-5xl">READY TO BUILD?</h2>
+            <p className="mt-5 text-lg sm:text-xl lg:text-2xl">
               Launching, scaling, or repositioning a web3 project? Slide into the DMs.
             </p>
           </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-5 max-w-2xl mx-auto">
+          <div className="mt-10 flex flex-wrap justify-center gap-5 lg:gap-7 max-w-2xl lg:max-w-3xl mx-auto">
             {links.map((l) => (
               <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
-                className={`pixel-box p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color} w-full sm:w-auto min-w-[200px]`}>
-                <div className="font-display text-[10px]">{l.label}</div>
-                <div className="mt-3 font-mono text-xl truncate">{l.handle} →</div>
+                className={`pixel-box p-5 lg:p-7 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color} w-full sm:w-auto lg:w-[260px]`}>
+                <div className="font-display text-[10px] lg:text-xs">{l.label}</div>
+                <div className="mt-3 font-mono text-xl lg:text-2xl truncate">{l.handle} →</div>
               </a>
             ))}
           </div>
