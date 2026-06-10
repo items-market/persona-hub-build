@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import zaneAvatar from "@/assets/zane.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -30,279 +30,184 @@ const PROFILE = {
 };
 
 const services = [
-  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦" },
-  { title: "Community Raids", desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "◇" },
-  { title: "Spaces & AMAs", desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎" },
-  { title: "Launch Support", desc: "End-to-end web3 KOL rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "▲" },
+  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦", color: "bg-accent-1" },
+  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "◇", color: "bg-accent-2" },
+  { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎", color: "bg-accent-3 text-card" },
+  { title: "Launch Support",   desc: "End-to-end web3 KOL rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "▲", color: "bg-card" },
 ];
 
 const verticals = [
-  { name: "RWA", desc: "Real-world asset vaults & onchain yield." },
-  { name: "AI × Crypto", desc: "Agentic protocols and AI co-workers." },
-  { name: "Security", desc: "Post-quantum, MPC, infra hardening." },
-  { name: "L2 / Infra", desc: "Rollups, bridges, vault infrastructure." },
-  { name: "DeFi", desc: "Curated risk-adjusted yield products." },
-  { name: "Launches", desc: "TGE, mainnet, campaign go-to-market." },
-];
-
-const testimonials = [
-  { quote: "Brought us real holders, not bots. The thread alone moved volume.", who: "Web3 Founder" },
-  { quote: "Talks to holders, not just charts. Rare.", who: "Growth Lead, RWA" },
-  { quote: "Best ROI of our KOL round.", who: "CMO, L2 Protocol" },
+  { name: "RWA",          desc: "Real-world asset vaults & onchain yield." },
+  { name: "AI × CRYPTO",  desc: "Agentic protocols and AI co-workers." },
+  { name: "SECURITY",     desc: "Post-quantum, MPC, infra hardening." },
+  { name: "L2 / INFRA",   desc: "Rollups, bridges, vault infrastructure." },
+  { name: "DEFI",         desc: "Curated risk-adjusted yield products." },
+  { name: "LAUNCHES",     desc: "TGE, mainnet, campaign go-to-market." },
 ];
 
 const links = [
-  { label: "X / Twitter", handle: "@0xZane_", href: "https://x.com/0xZane_" },
-  { label: "Telegram", handle: "DM for collabs", href: "https://t.me/" },
-  { label: "Email", handle: "gm@zane.web3", href: "mailto:gm@zane.web3" },
+  { label: "X / TWITTER", handle: "@0xZane_",       href: "https://x.com/0xZane_",  color: "bg-accent-1" },
+  { label: "TELEGRAM",    handle: "DM for collabs", href: "https://t.me/",          color: "bg-accent-2" },
+  { label: "EMAIL",       handle: "gm@zane.web3",   href: "mailto:gm@zane.web3",    color: "bg-accent-3 text-card" },
 ];
-
-function useScrollReveal(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); io.unobserve(el); } },
-      { threshold }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const heroReveal = useScrollReveal(0.05);
-  const aboutReveal = useScrollReveal();
-  const servicesReveal = useScrollReveal();
-  const verticalsReveal = useScrollReveal();
-  const contactReveal = useScrollReveal();
-
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const handleMove = (e: React.MouseEvent) => {
-    const el = heroRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-    const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    setTilt({ x, y });
-  };
 
   return (
     <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden">
-      {/* CRT scanlines overlay */}
-      <div className="pointer-events-none fixed inset-0 z-50 scanlines opacity-30 mix-blend-overlay" />
-      {/* ambient pixel grid */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div
-          className="absolute -top-32 -left-32 h-[420px] w-[420px] bg-accent-1/20"
-          style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)`, clipPath: "polygon(0 0,100% 0,100% 88%,88% 100%,0 100%)" }}
-        />
-        <div
-          className="absolute top-[40%] -right-40 h-[520px] w-[520px] bg-accent-2/15"
-          style={{ transform: `translate3d(0, ${scrollY * -0.08}px, 0)`, clipPath: "polygon(12% 0,100% 0,100% 100%,0 100%,0 12%)" }}
-        />
-        <div className="absolute inset-0 grid-bg opacity-40" />
-      </div>
-
-
-      {/* NAV */}
-      <header className="sticky top-0 z-40  bg-bg/70 border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-          <a href="#top" className="flex min-w-0 items-center gap-2.5">
-            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center  bg-gradient-to-br from-accent-1 to-accent-2 text-bg font-bold text-sm shadow-glow">Z</span>
-            <span className="font-display font-semibold tracking-tight text-sm sm:text-base truncate">
-              Zane <span className="text-fg/40">/ {PROFILE.handle}</span>
+      {/* NAV — yellow pixel bar */}
+      <header className="sticky top-0 z-40 bg-accent-1 border-b-[3px] border-fg">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <span className="shrink-0 inline-block h-7 w-7 sm:h-8 sm:w-8 bg-accent-3 border-[3px] border-fg" />
+            <span className="font-display text-[11px] sm:text-sm truncate">
+              ZANE <span className="opacity-60">· {PROFILE.handle}</span>
             </span>
           </a>
-          <nav className="hidden md:flex items-center gap-7 text-sm text-fg/70">
-            <a href="#about" className="hover:text-fg transition-colors">About</a>
-            <a href="#services" className="hover:text-fg transition-colors">Services</a>
-            <a href="#verticals" className="hover:text-fg transition-colors">Verticals</a>
-            <a href="#contact" className="hover:text-fg transition-colors">Contact</a>
+          <nav className="hidden md:flex items-center gap-7 font-display text-[11px] uppercase">
+            <a href="#about" className="hover:text-accent-3">About</a>
+            <a href="#services" className="hover:text-accent-3">Services</a>
+            <a href="#verticals" className="hover:text-accent-3">Verticals</a>
+            <a href="#contact" className="hover:text-accent-3">Contact</a>
           </nav>
           <div className="flex items-center gap-2 shrink-0">
             <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-2  bg-fg text-bg px-4 py-2 text-xs font-semibold hover:bg-accent-1 hover:text-bg transition-colors">
-              Follow <span aria-hidden>→</span>
+              className="hidden sm:inline-flex items-center gap-2 bg-fg text-card px-4 py-2 font-display text-[11px] border-[3px] border-fg shadow-[4px_4px_0_0_oklch(0.65_0.25_25)] hover:shadow-[2px_2px_0_0_oklch(0.65_0.25_25)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+              FOLLOW <span aria-hidden>→</span>
             </a>
             <button
               aria-label="Toggle menu"
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden h-10 w-10 grid place-items-center  border border-white/10 bg-white/5 text-fg"
+              className="md:hidden h-10 w-10 grid place-items-center bg-card border-[3px] border-fg"
             >
-              <span className="text-lg leading-none">{menuOpen ? "✕" : "≡"}</span>
+              <span className="text-xl leading-none">{menuOpen ? "✕" : "≡"}</span>
             </button>
           </div>
         </div>
         {menuOpen && (
-          <nav className="md:hidden border-t border-white/5 bg-bg/95  px-4 py-3 grid gap-1.5 text-sm animate-fade-in">
-            {[
-              ["About", "#about"],
-              ["Services", "#services"],
-              ["Verticals", "#verticals"],
-              ["Contact", "#contact"],
-            ].map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)}
-                className=" px-3 py-3 bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-colors">
-                {label}
-              </a>
+          <nav className="md:hidden border-t-[3px] border-fg bg-accent-1 px-3 py-3 grid gap-2 font-display text-[11px] uppercase">
+            {[["About","#about"],["Services","#services"],["Verticals","#verticals"],["Contact","#contact"]].map(([l,h]) => (
+              <a key={h} href={h} onClick={() => setMenuOpen(false)} className="bg-card border-[3px] border-fg px-3 py-3">{l}</a>
             ))}
             <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
-              className=" px-3 py-3 bg-fg text-bg text-center font-semibold">
-              Follow @0xZane_ →
-            </a>
+              className="bg-fg text-card border-[3px] border-fg px-3 py-3 text-center">FOLLOW @0xZane_ →</a>
           </nav>
         )}
       </header>
 
       {/* HERO */}
-      <section id="top" ref={heroRef} onMouseMove={handleMove} onMouseLeave={() => setTilt({ x: 0, y: 0 })} className="relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24 grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-14 items-center">
-          <div className="order-2 md:order-1">
-            <div className="inline-flex items-center gap-2  border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-fg/80 mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full  bg-accent-2 opacity-75 animate-ping" />
-                <span className="relative inline-flex h-2 w-2  bg-accent-2" />
-              </span>
-              ► PLAYER 1 READY · OPEN FOR COLLABS
+      <section id="top" className="relative overflow-hidden">
+        {/* floating dots */}
+        <span className="hidden sm:block absolute top-24 left-[28%] h-5 w-5 rounded-full bg-card border-[3px] border-fg animate-float" />
+        <span className="hidden sm:block absolute top-40 right-[42%] h-12 w-12 rounded-full bg-accent-1 border-[3px] border-fg grid place-items-center font-display text-xs animate-float" style={{ animationDelay: "0.6s" }}>★</span>
+        <span className="hidden md:block absolute top-[58%] right-[38%] h-10 w-10 rounded-full bg-accent-3 border-[3px] border-fg animate-float" style={{ animationDelay: "1.2s" }} />
+        <span className="hidden md:block absolute top-[28%] right-[8%] h-12 w-12 rounded-full bg-accent-2 border-[3px] border-fg grid place-items-center font-display text-xs animate-float" style={{ animationDelay: "0.3s" }}>=</span>
+        <span className="hidden md:block absolute bottom-16 right-[18%] h-9 w-9 rounded-full bg-accent-2 border-[3px] border-fg animate-float" style={{ animationDelay: "1s" }} />
+        <span className="hidden md:block absolute top-[70%] right-[50%] h-3 w-3 rounded-full bg-card border-[3px] border-fg" />
+        <span className="hidden lg:block absolute top-[55%] right-[2%] h-5 w-5 rounded-full bg-card border-[3px] border-fg" />
+
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 pt-10 sm:pt-16 pb-14 sm:pb-20 grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-12 items-center">
+          <div className="order-2 md:order-1 relative z-10">
+            <div className="inline-flex items-center gap-2 bg-fg text-card px-3 py-2 font-display text-[10px] sm:text-xs mb-6 border-[3px] border-fg">
+              <span className="h-2 w-2 bg-accent-2 animate-blink" />
+              ► ONLINE · OPEN FOR COLLABS
             </div>
-            <h1 className="font-display font-semibold tracking-tight text-[clamp(2.1rem,7vw,4.25rem)] leading-[1.02]">
-              Crypto KOL.<br />
-              <span className="bg-gradient-to-r from-accent-1 via-accent-3 to-accent-2 bg-clip-text text-transparent">
-                Growing web3
-              </span>
-              <br />through community.
+            <h1 className="font-display text-[clamp(1.6rem,6vw,3.25rem)] leading-[1.15]">
+              CRYPTO KOL.<br />
+              <span className="text-accent-3">I GROW WEB3</span><br />
+              PROJECTS.
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg text-fg/70 leading-relaxed">
-              I'm <span className="text-fg font-medium">@0xZane_</span> — {PROFILE.bio}.
-              I help builders win attention, trust, and real holders through threads, raids, Spaces, and a community that actually shows up.
+            <p className="mt-6 max-w-xl text-lg sm:text-xl leading-snug">
+              {PROFILE.bio}. I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
-                className="group inline-flex items-center gap-2  bg-fg text-bg px-5 sm:px-6 py-3 text-sm font-semibold hover:shadow-glow transition-shadow">
-                Follow on X
-                <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                className="font-display text-xs sm:text-sm bg-accent-3 text-card px-5 sm:px-6 py-3 sm:py-4 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                ► FOLLOW ME
               </a>
               <a href="#contact"
-                className="inline-flex items-center gap-2  border border-white/15 bg-white/5 px-5 sm:px-6 py-3 text-sm font-semibold hover:bg-white/10 transition-colors">
-                Work with me
+                className="font-display text-xs sm:text-sm bg-card px-5 sm:px-6 py-3 sm:py-4 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                WORK WITH ME
               </a>
             </div>
           </div>
 
-          {/* avatar card with tilt */}
+          {/* avatar window */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div
-              className="relative w-[min(82vw,340px)] sm:w-[360px] transition-transform duration-200 ease-out"
-              style={{ transform: `perspective(1000px) rotateY(${tilt.x * 6}deg) rotateX(${-tilt.y * 6}deg)` }}
-            >
-              <div className="absolute -inset-2  bg-gradient-to-br from-accent-1 via-accent-3 to-accent-2 opacity-60 blur-sm" />
-              <div className="relative  border border-white/10 bg-card/80  p-3 shadow-2xl">
-                <div className="relative overflow-hidden ">
-                  <img
-                    src={zaneAvatar.url}
-                    alt="Zane @0xZane_ profile"
-                    className="w-full h-auto block"
-                  />
-                <div className="absolute top-3 left-3 inline-flex items-center gap-1.5  bg-bg/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-fg/90 border border-white/10">
-                  <span className="h-1.5 w-1.5  bg-accent-2 animate-pulse" />
-                  LIVE
-                </div>
-                <div className="absolute top-3 right-3  bg-accent-1 text-bg px-2.5 py-1 text-[10px] font-semibold">
-                  ✓ Verified
-                </div>
+            <div className="w-[min(86vw,360px)] pixel-box p-0">
+              {/* window chrome */}
+              <div className="flex items-center justify-between gap-3 px-3 py-2 border-b-[3px] border-fg bg-card">
+                <span className="font-mono text-sm">ZANE.PNG</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-3 w-3 bg-accent-2 border-2 border-fg" />
+                  <span className="h-3 w-3 bg-accent-1 border-2 border-fg" />
+                  <span className="h-3 w-3 bg-accent-3 border-2 border-fg" />
+                </span>
               </div>
-              <div className="mt-3 flex items-center justify-between px-1.5">
-                <div className="min-w-0">
-                  <div className="font-display font-semibold text-sm truncate">{PROFILE.name}</div>
-                  <div className="text-xs text-fg/50 truncate">{PROFILE.handle}</div>
-                </div>
-                <div className="text-right shrink-0">
-                  <div className="font-mono text-sm text-accent-1">Growth</div>
-                  <div className="text-[10px] uppercase tracking-wider text-fg/40">Partner</div>
-                </div>
+              {/* image */}
+              <div className="relative bg-bg p-3">
+                <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
+                <span className="absolute top-5 right-5 bg-card border-[3px] border-fg px-2 py-1 font-display text-[9px]">
+                  ✓ VERIFIED
+                </span>
               </div>
-            </div>
-              {/* floating chips */}
-              <div className="absolute -top-3 -right-3  bg-card border border-white/10 px-3 py-1.5 text-[11px] font-mono text-accent-3 shadow-lg animate-float">
-                #web3
+              {/* chips row */}
+              <div className="grid grid-cols-3 gap-2 p-3 pt-0">
+                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] py-2">REACH</span>
+                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] py-2">TRUST</span>
+                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] py-2">SIGNAL</span>
               </div>
-              <div className="absolute -bottom-3 -left-3  bg-card border border-white/10 px-3 py-1.5 text-[11px] font-mono text-accent-2 shadow-lg animate-float" style={{ animationDelay: "1s" }}>
-                +RWA
+              {/* footer */}
+              <div className="flex items-center justify-between px-3 py-2 border-t-[3px] border-fg bg-card">
+                <span className="font-mono text-base truncate">{PROFILE.handle}</span>
+                <span className="font-display text-[10px] bg-fg text-card px-2 py-1">PARTNER</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" className="relative border-t border-white/5">
-        <div ref={aboutReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 transition-all duration-700 ${aboutReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      {/* ABOUT — cream band */}
+      <section id="about" className="bg-cream border-y-[3px] border-fg">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16">
           <div>
-            <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// About</div>
-            <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl leading-tight">
-              Who is<br />Zane?
-            </h2>
+            <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// ABOUT</div>
+            <h2 className="mt-5 font-display text-2xl sm:text-3xl leading-tight">WHO IS<br />ZANE?</h2>
           </div>
-          <div className="space-y-5 text-base sm:text-lg text-fg/75 leading-relaxed">
+          <div className="space-y-5 text-lg sm:text-xl leading-snug">
             <p>
-              I'm <span className="text-fg font-medium">@0xZane_</span> — a crypto KOL on X covering
-              web3, RWAs, AI × crypto, security and yield.
+              I'm <span className="hl-yellow font-mono">@0xZane_</span> — a{" "}
+              <span className="hl-green font-mono">crypto KOL on X</span> covering web3, RWAs, AI×crypto, security, and yield.
             </p>
             <p>
               I work with founders to shape narrative, drive attention, and bring{" "}
-              <span className="text-accent-1 font-medium">real holders</span> instead of bots.
-              Every campaign starts with the product — never the hype.
+              <span className="hl-red font-mono">real holders</span> instead of bots. Every campaign starts with the product — never the hype.
             </p>
-            <p className="text-sm font-mono text-fg/50">
-              "tech enthusiast · fulltimeonweb3 · vibe coder"
-            </p>
+            <p className="font-display text-xs sm:text-sm text-accent-3">"TECH ENTHUSIAST · FULLTIMEONWEB3 · VIBE CODER"</p>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="relative border-t border-white/5">
-        <div ref={servicesReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${servicesReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <section id="services" className="border-b-[3px] border-fg">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>
-              <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Services</div>
-              <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl leading-tight">How I help you grow</h2>
+              <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// SERVICES</div>
+              <h2 className="mt-5 font-display text-2xl sm:text-3xl leading-tight">HOW I HELP<br />YOU GROW</h2>
             </div>
-            <p className="text-sm sm:text-base text-fg/60 max-w-sm">
-              Pick one or bundle them for a full launch. Every engagement is custom-scoped.
-            </p>
+            <p className="text-lg sm:text-xl max-w-sm">Pick one or stack them for a full launch. Every engagement is custom-scoped.</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid sm:grid-cols-2 gap-5 sm:gap-7">
             {services.map((s, i) => (
-              <article
-                key={s.title}
-                className="group relative  border border-white/10 bg-card/60  p-6 sm:p-7 overflow-hidden hover:border-accent-1/40 hover:-translate-y-1 transition-all duration-300"
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-1/10 via-transparent to-accent-2/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex h-10 w-10 items-center justify-center  bg-gradient-to-br from-accent-1/20 to-accent-2/20 border border-white/10 text-accent-1 text-lg">
-                      {s.icon}
-                    </span>
-                    <span className="font-mono text-xs text-fg/30">0{i + 1}</span>
-                  </div>
-                  <h3 className="font-display font-semibold text-xl mb-2">{s.title}</h3>
-                  <p className="text-fg/70 text-sm sm:text-base leading-relaxed">{s.desc}</p>
+              <article key={s.title} className="pixel-box p-5 sm:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`inline-grid place-items-center h-10 w-10 border-[3px] border-fg font-display text-base ${s.color}`}>{s.icon}</span>
+                  <span className="font-display text-xs opacity-60">0{i + 1}</span>
                 </div>
+                <h3 className="font-display text-sm sm:text-base mb-3">{s.title.toUpperCase()}</h3>
+                <p className="text-lg leading-snug">{s.desc}</p>
               </article>
             ))}
           </div>
@@ -310,69 +215,53 @@ function Index() {
       </section>
 
       {/* VERTICALS */}
-      <section id="verticals" className="relative border-t border-white/5">
-        <div ref={verticalsReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${verticalsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <section id="verticals" className="bg-cream border-b-[3px] border-fg">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
           <div className="text-center mb-10 sm:mb-14">
-            <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Coverage</div>
-            <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl">Verticals I cover</h2>
+            <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// COVERAGE</div>
+            <h2 className="mt-5 font-display text-2xl sm:text-3xl">VERTICALS I COVER</h2>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-            {verticals.map((v, i) => (
-              <div key={v.name} className=" border border-white/10 bg-white/[0.03] p-5 hover:bg-white/[0.06] hover:border-accent-1/30 hover:-translate-y-0.5 transition-all duration-300" style={{ transitionDelay: `${i * 40}ms` }}>
-                <div className="font-display font-semibold text-lg text-fg">{v.name}</div>
-                <p className="mt-1.5 text-sm text-fg/60 leading-relaxed">{v.desc}</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {verticals.map((v) => (
+              <div key={v.name} className="pixel-box-sm p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+                <div className="font-display text-sm text-accent-3">{v.name}</div>
+                <p className="mt-2 text-lg leading-snug">{v.desc}</p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="relative border-t border-white/5">
-        <div ref={contactReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${contactReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative  border border-white/10 bg-card/60  p-8 sm:p-14 overflow-hidden">
-            <div className="absolute inset-0 -z-0 opacity-60">
-              <div className="absolute -top-20 left-1/4 h-64 w-64  bg-accent-1/30 blur-sm animate-pulse" />
-              <div className="absolute -bottom-20 right-1/4 h-64 w-64  bg-accent-2/30 blur-sm animate-pulse" style={{ animationDelay: "1.5s" }} />
-            </div>
-            <div className="relative text-center max-w-2xl mx-auto">
-              <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Let's talk</div>
-              <h2 className="mt-3 font-display font-semibold text-3xl sm:text-5xl leading-tight">
-                READY PLAYER 2?
-              </h2>
-              <p className="mt-4 text-base sm:text-lg text-fg/70">
-                Launching, scaling, or repositioning a web3 project? Slide into the DMs.
-              </p>
-            </div>
-            <div className="relative mt-10 grid sm:grid-cols-3 gap-3 sm:gap-4">
-              {links.map((l, i) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center justify-between gap-3  border border-white/10 bg-bg/40 hover:bg-bg/70 hover:border-accent-1/40 hover:-translate-y-0.5 p-5 transition-all duration-300"
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-fg/50">{l.label}</div>
-                    <div className="mt-1 font-display font-semibold text-base truncate">{l.handle}</div>
-                  </div>
-                  <span className="shrink-0 grid place-items-center h-9 w-9  bg-white/5 border border-white/10 text-fg/70 group-hover:bg-accent-1 group-hover:text-bg group-hover:translate-x-0.5 transition-all">→</span>
-                </a>
-              ))}
-            </div>
+      <section id="contact" className="border-b-[3px] border-fg relative overflow-hidden">
+        <span className="hidden sm:block absolute top-10 left-[10%] h-8 w-8 rounded-full bg-accent-1 border-[3px] border-fg animate-float" />
+        <span className="hidden sm:block absolute bottom-10 right-[12%] h-6 w-6 rounded-full bg-accent-3 border-[3px] border-fg animate-float" style={{ animationDelay: "0.5s" }} />
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// LET'S TALK</div>
+            <h2 className="mt-5 font-display text-2xl sm:text-4xl">READY PLAYER 2?</h2>
+            <p className="mt-5 text-lg sm:text-xl">
+              Launching, scaling, or repositioning a web3 project? Slide into the DMs.
+            </p>
+          </div>
+          <div className="mt-10 grid sm:grid-cols-3 gap-5">
+            {links.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
+                className={`pixel-box p-5 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color}`}>
+                <div className="font-display text-[10px]">{l.label}</div>
+                <div className="mt-3 font-mono text-xl truncate">{l.handle} →</div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-fg/50">
-          <span>© 2026 Zane · {PROFILE.handle}</span>
-          <span className="flex items-center gap-2 font-mono">
-            <span className="h-1.5 w-1.5  bg-accent-2 animate-pulse" />
+      <footer className="bg-fg text-card">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-display text-[10px]">
+          <span>© 2026 ZANE · {PROFILE.handle}</span>
+          <span className="flex items-center gap-2">
+            <span className="h-2 w-2 bg-accent-2 animate-blink" />
             COMMUNITY · INFLUENCE · TRUST
           </span>
         </div>
