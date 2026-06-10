@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import zaneAvatar from "@/assets/zane.jpg.asset.json";
-import pixelAvatar from "@/assets/avatar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Zane · @0xZane_ — Crypto KOL · Web3 Growth" },
-      { name: "description", content: "tech enthusiast | fulltimeonweb3 | vibe coder. I help web3 projects grow through community, threads, and real influence on X." },
+      { name: "description", content: "Crypto KOL helping web3 projects grow through community, threads, raids and real influence on X." },
       { property: "og:title", content: "Zane · @0xZane_ — Crypto KOL" },
       { property: "og:description", content: "Helping web3 projects grow through community & influence." },
       { property: "og:type", content: "profile" },
@@ -18,7 +17,7 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" },
     ],
   }),
   component: Index,
@@ -29,49 +28,48 @@ const PROFILE = {
   handle: "@0xZane_",
   bio: "tech enthusiast · fulltimeonweb3 · vibe coder",
   followers: "14.6K",
-  verified: true,
 };
 
-
 const stats = [
-  { k: "FOLLOWERS", v: "14.6K" },
-  { k: "VERIFIED", v: "✓" },
-  { k: "PROJECTS", v: "20+" },
-  { k: "FOCUS", v: "WEB3" },
+  { k: "Followers", v: "14.6K" },
+  { k: "Projects", v: "20+" },
+  { k: "Verticals", v: "RWA · AI · L2" },
+  { k: "Status", v: "Verified" },
 ];
 
 const services = [
-  { title: "THREAD CAMPAIGNS", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", color: "bg-coin" },
-  { title: "COMMUNITY RAIDS", desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", color: "bg-mint" },
-  { title: "SPACES & AMAs", desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", color: "bg-hot text-primary-foreground" },
-  { title: "LAUNCH SUPPORT", desc: "End-to-end web3 KOL rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", color: "bg-card" },
+  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦" },
+  { title: "Community Raids", desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "◇" },
+  { title: "Spaces & AMAs", desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎" },
+  { title: "Launch Support", desc: "End-to-end web3 KOL rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "▲" },
 ];
 
-const covered = [
-  { name: "FLINT RWA", tag: "Real estate vaults · ~10% APR" },
-  { name: "LAGOON FINANCE", tag: "ERC-7540 vault infra" },
-  { name: "QUIP NETWORK", tag: "Post-quantum security · WOTS+/SPHINCS+" },
-  { name: "ALTURA × JUMPER", tag: "AVLT · F1 Silverstone campaign" },
-  { name: "WORKCLAW", tag: "AI co-workers for companies" },
-  { name: "9SUMMITS", tag: "Curated risk-adjusted vaults" },
+const verticals = [
+  { name: "RWA", desc: "Real-world asset vaults & onchain yield." },
+  { name: "AI × Crypto", desc: "Agentic protocols and AI co-workers." },
+  { name: "Security", desc: "Post-quantum, MPC, infra hardening." },
+  { name: "L2 / Infra", desc: "Rollups, bridges, vault infrastructure." },
+  { name: "DeFi", desc: "Curated risk-adjusted yield products." },
+  { name: "Launches", desc: "TGE, mainnet, campaign go-to-market." },
 ];
-
 
 const testimonials = [
-  { quote: "Brought us real holders, not bots. The thread alone moved volume.", who: "WEB3 FOUNDER" },
-  { quote: "Talks to holders, not just charts. Rare.", who: "GROWTH LEAD, RWA" },
-  { quote: "Best ROI of our KOL round.", who: "CMO, L2 PROTOCOL" },
+  { quote: "Brought us real holders, not bots. The thread alone moved volume.", who: "Web3 Founder" },
+  { quote: "Talks to holders, not just charts. Rare.", who: "Growth Lead, RWA" },
+  { quote: "Best ROI of our KOL round.", who: "CMO, L2 Protocol" },
 ];
 
 const links = [
-  { label: "X / TWITTER", handle: "@0xZane_", href: "https://x.com/0xZane_", color: "bg-foreground text-background" },
-  { label: "TELEGRAM", handle: "DM FOR COLLABS", href: "https://t.me/", color: "bg-sky" },
-  { label: "EMAIL", handle: "GM@ZANE.WEB3", href: "mailto:gm@zane.web3", color: "bg-mint" },
+  { label: "X / Twitter", handle: "@0xZane_", href: "https://x.com/0xZane_" },
+  { label: "Telegram", handle: "DM for collabs", href: "https://t.me/" },
+  { label: "Email", handle: "gm@zane.web3", href: "mailto:gm@zane.web3" },
 ];
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -79,117 +77,162 @@ function Index() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <div className="min-h-screen w-full bg-sky overflow-x-hidden">
+  const handleMove = (e: React.MouseEvent) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    setTilt({ x, y });
+  };
 
+  return (
+    <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden antialiased">
+      {/* ambient gradient orbs */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div
+          className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-accent-1/30 blur-[120px]"
+          style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
+        />
+        <div
+          className="absolute top-[40%] -right-40 h-[520px] w-[520px] rounded-full bg-accent-2/25 blur-[140px]"
+          style={{ transform: `translate3d(0, ${scrollY * -0.08}px, 0)` }}
+        />
+        <div className="absolute inset-0 grid-bg opacity-[0.18]" />
+      </div>
 
       {/* NAV */}
-      <header className="border-b-4 border-foreground bg-coin sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:justify-between">
-          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-hot pixel-border-sm shrink-0" />
-            <span className="pixel text-[11px] sm:text-sm truncate">ZANE · @0xZane_</span>
+      <header className="sticky top-0 z-40 backdrop-blur-xl bg-bg/70 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+          <a href="#top" className="flex min-w-0 items-center gap-2.5">
+            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-accent-1 to-accent-2 text-bg font-bold text-sm shadow-glow">Z</span>
+            <span className="font-display font-semibold tracking-tight text-sm sm:text-base truncate">
+              Zane <span className="text-fg/40">/ {PROFILE.handle}</span>
+            </span>
           </a>
-          <nav className="hidden md:flex items-center gap-6 pixel text-[10px]">
-            <a href="#about" className="hover:text-hot transition-colors">ABOUT</a>
-            <a href="#services" className="hover:text-hot transition-colors">SERVICES</a>
-            
-            <a href="#projects" className="hover:text-hot transition-colors">PROJECTS</a>
-            <a href="#contact" className="hover:text-hot transition-colors">CONTACT</a>
+          <nav className="hidden md:flex items-center gap-7 text-sm text-fg/70">
+            <a href="#about" className="hover:text-fg transition-colors">About</a>
+            <a href="#services" className="hover:text-fg transition-colors">Services</a>
+            <a href="#verticals" className="hover:text-fg transition-colors">Verticals</a>
+            <a href="#contact" className="hover:text-fg transition-colors">Contact</a>
           </nav>
           <div className="flex items-center gap-2 shrink-0">
-            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer" className="hidden sm:inline-block pixel text-[10px] bg-foreground text-background px-3 py-2 pixel-border-sm hover:-translate-y-0.5 transition-transform">FOLLOW →</a>
+            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-fg text-bg px-4 py-2 text-xs font-semibold hover:bg-accent-1 hover:text-bg transition-colors">
+              Follow <span aria-hidden>→</span>
+            </a>
             <button
               aria-label="Toggle menu"
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden w-9 h-9 bg-foreground text-background pixel-border-sm flex items-center justify-center"
+              className="md:hidden h-10 w-10 grid place-items-center rounded-lg border border-white/10 bg-white/5 text-fg"
             >
-              <span className="pixel text-sm">{menuOpen ? "✕" : "≡"}</span>
+              <span className="text-lg leading-none">{menuOpen ? "✕" : "≡"}</span>
             </button>
           </div>
         </div>
         {menuOpen && (
-          <nav className="md:hidden border-t-4 border-foreground bg-coin px-4 py-3 grid gap-2 pixel text-[11px]">
+          <nav className="md:hidden border-t border-white/5 bg-bg/95 backdrop-blur-xl px-4 py-3 grid gap-1.5 text-sm animate-fade-in">
             {[
-              ["ABOUT", "#about"],
-              ["SERVICES", "#services"],
-              
-              ["PROJECTS", "#projects"],
-              ["CONTACT", "#contact"],
+              ["About", "#about"],
+              ["Services", "#services"],
+              ["Verticals", "#verticals"],
+              ["Contact", "#contact"],
             ].map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)} className="bg-card pixel-border-sm px-3 py-3">
+              <a key={href} href={href} onClick={() => setMenuOpen(false)}
+                className="rounded-lg px-3 py-3 bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-colors">
                 {label}
               </a>
             ))}
-            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer" className="bg-foreground text-background pixel-border-sm px-3 py-3 text-center">
-              FOLLOW @0xZane_ →
+            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
+              className="rounded-lg px-3 py-3 bg-fg text-bg text-center font-semibold">
+              Follow @0xZane_ →
             </a>
           </nav>
         )}
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden">
-        <div className="absolute inset-0 clouds opacity-70 pointer-events-none" style={{ transform: `translateY(${scrollY * 0.15}px)` }} />
-        <div className="max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 grid md:grid-cols-2 gap-8 md:gap-10 items-center relative">
+      <section id="top" ref={heroRef} onMouseMove={handleMove} onMouseLeave={() => setTilt({ x: 0, y: 0 })} className="relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24 grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-14 items-center">
           <div className="order-2 md:order-1">
-            <div className="inline-block bg-foreground text-background pixel text-[9px] sm:text-[10px] px-3 py-2 mb-5 anim-blink">
-              ◆ ONLINE · OPEN FOR COLLABS
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-fg/80 mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-accent-2 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-2" />
+              </span>
+              Online · Open for collabs
             </div>
-            <h1 className="pixel text-[22px] leading-[1.35] sm:text-3xl md:text-5xl md:leading-[1.3] mb-5 sm:mb-6 break-words">
-              CRYPTO KOL.<br />
-              <span className="text-hot">I GROW WEB3</span><br />
-              PROJECTS.
+            <h1 className="font-display font-semibold tracking-tight text-[clamp(2.1rem,7vw,4.25rem)] leading-[1.02]">
+              Crypto KOL.<br />
+              <span className="bg-gradient-to-r from-accent-1 via-accent-3 to-accent-2 bg-clip-text text-transparent">
+                Growing web3
+              </span>
+              <br />through community.
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-md leading-snug">
-              {PROFILE.bio}. I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
+            <p className="mt-6 max-w-xl text-base sm:text-lg text-fg/70 leading-relaxed">
+              I'm <span className="text-fg font-medium">@0xZane_</span> — {PROFILE.bio}.
+              I help builders win attention, trust, and real holders through threads, raids, Spaces, and a community that actually shows up.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer" className="pixel text-[11px] sm:text-xs bg-hot text-primary-foreground px-4 sm:px-5 py-3 sm:py-4 pixel-border hover:-translate-y-0.5 active:translate-y-0 transition-transform">▶ FOLLOW ME</a>
-              <a href="#contact" className="pixel text-[11px] sm:text-xs bg-card px-4 sm:px-5 py-3 sm:py-4 pixel-border hover:-translate-y-0.5 active:translate-y-0 transition-transform">WORK WITH ME</a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full bg-fg text-bg px-5 sm:px-6 py-3 text-sm font-semibold hover:shadow-glow transition-shadow">
+                Follow on X
+                <span className="transition-transform group-hover:translate-x-0.5">→</span>
+              </a>
+              <a href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 sm:px-6 py-3 text-sm font-semibold hover:bg-white/10 transition-colors">
+                Work with me
+              </a>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mt-8 sm:mt-10">
+            <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {stats.map((s) => (
-                <div key={s.k} className="bg-card pixel-border-sm p-3 text-center">
-                  <div className="pixel text-sm md:text-base text-hot">{s.v}</div>
-                  <div className="pixel text-[8px] mt-1 text-muted-foreground truncate">{s.k}</div>
+                <div key={s.k} className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-3.5 hover:border-accent-1/40 transition-colors">
+                  <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-fg/50">{s.k}</dt>
+                  <dd className="mt-1 font-display font-semibold text-base sm:text-lg text-fg">{s.v}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
 
-          <div className="relative flex justify-center order-1 md:order-2">
-            <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-12 h-12 sm:w-14 sm:h-14 bg-coin rounded-full pixel-border-sm flex items-center justify-center anim-float pixel text-sm sm:text-base">★</div>
-            <div className="absolute top-8 -right-1 sm:-right-2 w-10 h-10 sm:w-12 sm:h-12 bg-mint rounded-full pixel-border-sm flex items-center justify-center anim-float pixel text-xs sm:text-sm" style={{ animationDelay: "0.6s" }}>Ξ</div>
-            <div className="absolute bottom-6 -left-4 sm:-left-6 w-9 h-9 sm:w-10 sm:h-10 bg-hot rounded-full pixel-border-sm flex items-center justify-center anim-float text-primary-foreground pixel text-[10px] sm:text-xs" style={{ animationDelay: "1.2s" }}>₿</div>
-            <div className="absolute -bottom-2 right-2 sm:right-4 w-11 h-11 sm:w-12 sm:h-12 bg-accent rounded-full pixel-border-sm flex items-center justify-center anim-float pixel text-xs" style={{ animationDelay: "1.8s" }}>◎</div>
-
-            <div className="bg-card pixel-border p-3 sm:p-4 w-[260px] sm:w-[300px] md:w-[340px]">
-              <div className="flex justify-between items-center mb-3 pixel text-[9px] sm:text-[10px]">
-                <span className="truncate">ZANE.PNG</span>
-                <span className="flex gap-1 shrink-0">
-                  <span className="w-3 h-3 bg-mint" />
-                  <span className="w-3 h-3 bg-coin" />
-                  <span className="w-3 h-3 bg-hot" />
-                </span>
+          {/* avatar card with tilt */}
+          <div className="order-1 md:order-2 flex justify-center md:justify-end">
+            <div
+              className="relative w-[min(82vw,340px)] sm:w-[360px] transition-transform duration-200 ease-out"
+              style={{ transform: `perspective(1000px) rotateY(${tilt.x * 6}deg) rotateX(${-tilt.y * 6}deg)` }}
+            >
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-accent-1 via-accent-3 to-accent-2 opacity-60 blur-2xl" />
+              <div className="relative rounded-3xl border border-white/10 bg-card/80 backdrop-blur-xl p-3 shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl">
+                  <img
+                    src={zaneAvatar.url}
+                    alt="Zane @0xZane_ profile"
+                    className="w-full h-auto block"
+                  />
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-bg/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-fg/90 border border-white/10">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent-2 animate-pulse" />
+                    LIVE
+                  </div>
+                  <div className="absolute top-3 right-3 rounded-full bg-accent-1 text-bg px-2.5 py-1 text-[10px] font-semibold">
+                    ✓ Verified
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center justify-between px-1.5">
+                  <div className="min-w-0">
+                    <div className="font-display font-semibold text-sm truncate">{PROFILE.name}</div>
+                    <div className="text-xs text-fg/50 truncate">{PROFILE.handle}</div>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono text-sm text-accent-1">{PROFILE.followers}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-fg/40">Followers</div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-sky pixel-border-sm overflow-hidden relative">
-                <img
-                  src={zaneAvatar.url}
-                  alt="Zane @0xZane_ profile"
-                  className="w-full h-auto block"
-                  style={{ imageRendering: "pixelated" }}
-                />
-                <div className="absolute top-2 right-2 bg-foreground text-background pixel text-[8px] px-2 py-1">✓ VERIFIED</div>
+              {/* floating chips */}
+              <div className="absolute -top-3 -right-3 rounded-full bg-card border border-white/10 px-3 py-1.5 text-[11px] font-mono text-accent-3 shadow-lg animate-float">
+                #web3
               </div>
-              <div className="mt-3 grid grid-cols-3 gap-2 pixel text-[8px]">
-                <div className="bg-mint p-2 text-center pixel-border-sm">REACH</div>
-                <div className="bg-coin p-2 text-center pixel-border-sm">TRUST</div>
-                <div className="bg-hot text-primary-foreground p-2 text-center pixel-border-sm">SIGNAL</div>
-              </div>
-              <div className="mt-3 pixel text-[9px] flex items-center justify-between">
-                <span className="truncate">{PROFILE.handle}</span>
-                <span className="bg-foreground text-background px-2 py-1">{PROFILE.followers}</span>
+              <div className="absolute -bottom-3 -left-3 rounded-full bg-card border border-white/10 px-3 py-1.5 text-[11px] font-mono text-accent-2 shadow-lg animate-float" style={{ animationDelay: "1s" }}>
+                +RWA
               </div>
             </div>
           </div>
@@ -197,125 +240,139 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="border-y-4 border-foreground bg-card">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14 grid md:grid-cols-3 gap-6 md:gap-8">
-          <div className="md:col-span-1">
-            <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// ABOUT</div>
-            <h2 className="pixel text-lg sm:text-xl md:text-2xl mt-4 leading-snug">WHO IS<br/>ZANE?</h2>
+      <section id="about" className="relative border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16">
+          <div>
+            <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// About</div>
+            <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl leading-tight">
+              Who is<br />Zane?
+            </h2>
           </div>
-          <div className="md:col-span-2 space-y-4 text-lg sm:text-xl">
+          <div className="space-y-5 text-base sm:text-lg text-fg/75 leading-relaxed">
             <p>
-              I'm <strong className="bg-coin px-1">@0xZane_</strong> — a
-              <strong className="bg-mint px-1"> crypto KOL on X</strong> covering web3,
-              RWAs, AI×crypto, security, and yield.
+              I'm <span className="text-fg font-medium">@0xZane_</span> — a crypto KOL on X covering
+              web3, RWAs, AI × crypto, security and yield.
             </p>
             <p>
-              I work with founders to shape narrative, drive attention, and bring
-              <strong className="bg-hot text-primary-foreground px-1"> real holders</strong>
-              instead of bots. Every campaign starts with the product — never the hype.
+              I work with founders to shape narrative, drive attention, and bring{" "}
+              <span className="text-accent-1 font-medium">real holders</span> instead of bots.
+              Every campaign starts with the product — never the hype.
             </p>
-            <p className="pixel text-[11px] sm:text-xs leading-relaxed text-hot">
-              "TECH ENTHUSIAST · FULLTIMEONWEB3 · VIBE CODER"
+            <p className="text-sm font-mono text-fg/50">
+              "tech enthusiast · fulltimeonweb3 · vibe coder"
             </p>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="bg-sky">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
-          <div className="flex items-end justify-between mb-6 sm:mb-8 flex-wrap gap-4">
+      <section id="services" className="relative border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>
-              <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// SERVICES</div>
-              <h2 className="pixel text-lg sm:text-xl md:text-2xl mt-4">HOW I HELP YOU GROW</h2>
+              <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Services</div>
+              <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl leading-tight">How I help you grow</h2>
             </div>
-            <p className="text-base sm:text-lg max-w-sm">Pick a quest. Bundles available for serious launches.</p>
+            <p className="text-sm sm:text-base text-fg/60 max-w-sm">
+              Pick one or bundle them for a full launch. Every engagement is custom-scoped.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-            {services.map((s) => (
-              <div key={s.title} className={`${s.color} pixel-border p-5 sm:p-6 hover:-translate-y-1 active:translate-y-0 transition-transform`}>
-                <div className="pixel text-[12px] sm:text-sm md:text-base mb-3">{s.title}</div>
-                <p className="text-base sm:text-lg leading-snug">{s.desc}</p>
-              </div>
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+            {services.map((s, i) => (
+              <article
+                key={s.title}
+                className="group relative rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6 sm:p-7 overflow-hidden hover:border-accent-1/40 hover:-translate-y-1 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-1/10 via-transparent to-accent-2/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent-1/20 to-accent-2/20 border border-white/10 text-accent-1 text-lg">
+                      {s.icon}
+                    </span>
+                    <span className="font-mono text-xs text-fg/30">0{i + 1}</span>
+                  </div>
+                  <h3 className="font-display font-semibold text-xl mb-2">{s.title}</h3>
+                  <p className="text-fg/70 text-sm sm:text-base leading-relaxed">{s.desc}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-
-
-
-      {/* PROJECTS COVERED */}
-      <section id="projects" className="border-y-4 border-foreground bg-sky">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
-          <div className="text-center mb-8 sm:mb-10">
-            <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// COVERED RECENTLY</div>
-            <h2 className="pixel text-lg sm:text-xl md:text-3xl mt-4">PROJECTS I'VE AMPLIFIED</h2>
+      {/* VERTICALS */}
+      <section id="verticals" className="relative border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Coverage</div>
+            <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl">Verticals I cover</h2>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-            {covered.map((p, i) => (
-              <div key={p.name} className={`pixel-border p-4 sm:p-5 hover:-translate-y-1 transition-transform ${i % 3 === 0 ? "bg-coin" : i % 3 === 1 ? "bg-mint" : "bg-card"}`}>
-                <div className="pixel text-[11px] sm:text-xs mb-2 break-words">{p.name}</div>
-                <p className="text-base sm:text-lg leading-snug">{p.tag}</p>
+            {verticals.map((v) => (
+              <div key={v.name} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:bg-white/[0.06] hover:border-accent-1/30 transition-colors">
+                <div className="font-display font-semibold text-lg text-fg">{v.name}</div>
+                <p className="mt-1.5 text-sm text-fg/60 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-3 sm:gap-4 mt-10">
+          <div className="mt-14 grid md:grid-cols-3 gap-3 sm:gap-4">
             {testimonials.map((t) => (
-              <div key={t.who} className="bg-card pixel-border-sm p-4 sm:p-5">
-                <p className="text-base sm:text-lg leading-snug">"{t.quote}"</p>
-                <div className="pixel text-[9px] sm:text-[10px] mt-4 text-hot">— {t.who}</div>
-              </div>
+              <figure key={t.who} className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6">
+                <div className="text-accent-1 text-2xl leading-none">"</div>
+                <blockquote className="mt-2 text-fg/80 text-sm sm:text-base leading-relaxed">{t.quote}</blockquote>
+                <figcaption className="mt-4 text-xs font-mono uppercase tracking-wider text-fg/50">— {t.who}</figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="border-t-4 border-foreground bg-mint">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
-          <div className="text-center mb-8 sm:mb-10">
-            <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// LET'S TALK</div>
-            <h2 className="pixel text-xl sm:text-2xl md:text-3xl mt-4">READY TO GROW?</h2>
-            <p className="text-base sm:text-xl mt-4 max-w-xl mx-auto leading-snug">
-              Launching, scaling, or repositioning a web3 project? Slide into the DMs.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`${l.color} pixel-border p-4 sm:p-5 flex items-center justify-between gap-3 hover:-translate-y-1 active:translate-y-0 transition-transform`}
-              >
-                <div className="min-w-0">
-                  <div className="pixel text-[11px] sm:text-xs">{l.label}</div>
-                  <div className="text-base sm:text-lg mt-1 truncate">{l.handle}</div>
-                </div>
-                <span className="pixel text-base shrink-0">→</span>
-              </a>
-            ))}
-          </div>
-
-          {/* easter egg pixel avatar */}
-          <div className="mt-12 flex justify-center">
-            <div className="bg-card pixel-border-sm p-2 inline-flex flex-col items-center">
-              <img src={pixelAvatar.url} alt="" className="w-20 h-20" style={{ imageRendering: "pixelated" }} />
-              <span className="pixel text-[8px] mt-2">PIXEL_MODE.ON</span>
+      <section id="contact" className="relative border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="relative rounded-3xl border border-white/10 bg-card/60 backdrop-blur-xl p-8 sm:p-14 overflow-hidden">
+            <div className="absolute inset-0 -z-0 opacity-60">
+              <div className="absolute -top-20 left-1/4 h-64 w-64 rounded-full bg-accent-1/30 blur-3xl" />
+              <div className="absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-accent-2/30 blur-3xl" />
+            </div>
+            <div className="relative text-center max-w-2xl mx-auto">
+              <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Let's talk</div>
+              <h2 className="mt-3 font-display font-semibold text-3xl sm:text-5xl leading-tight">
+                Ready to grow?
+              </h2>
+              <p className="mt-4 text-base sm:text-lg text-fg/70">
+                Launching, scaling, or repositioning a web3 project? Slide into the DMs.
+              </p>
+            </div>
+            <div className="relative mt-10 grid sm:grid-cols-3 gap-3 sm:gap-4">
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-bg/40 hover:bg-bg/70 hover:border-accent-1/40 p-5 transition-all"
+                >
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-fg/50">{l.label}</div>
+                    <div className="mt-1 font-display font-semibold text-base truncate">{l.handle}</div>
+                  </div>
+                  <span className="shrink-0 grid place-items-center h-9 w-9 rounded-full bg-white/5 border border-white/10 text-fg/70 group-hover:bg-accent-1 group-hover:text-bg group-hover:translate-x-0.5 transition-all">→</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t-4 border-foreground bg-coin">
-        <div className="max-w-6xl mx-auto px-4 py-5 sm:py-6 flex flex-wrap items-center justify-between gap-3">
-          <span className="pixel text-[9px] sm:text-[10px]">© 2026 ZANE · @0xZane_ · GM ☀️</span>
-          <span className="pixel text-[9px] sm:text-[10px] flex items-center gap-2">
-            <span className="w-2 h-2 bg-hot anim-blink shrink-0" /> COMMUNITY · INFLUENCE · TRUST
+      <footer className="border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-fg/50">
+          <span>© 2026 Zane · {PROFILE.handle}</span>
+          <span className="flex items-center gap-2 font-mono">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-2 animate-pulse" />
+            Community · Influence · Trust
           </span>
         </div>
       </footer>
