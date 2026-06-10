@@ -113,7 +113,7 @@ function Index() {
             {[
               ["ABOUT", "#about"],
               ["SERVICES", "#services"],
-              ["POSTS", "#posts"],
+              
               ["PROJECTS", "#projects"],
               ["CONTACT", "#contact"],
             ].map(([label, href]) => (
@@ -134,7 +134,7 @@ function Index() {
         <div className="max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 grid md:grid-cols-2 gap-8 md:gap-10 items-center relative">
           <div className="order-2 md:order-1">
             <div className="inline-block bg-foreground text-background pixel text-[9px] sm:text-[10px] px-3 py-2 mb-5 anim-blink">
-              ◆ ONLINE · BOOKING Q3
+              ◆ ONLINE · OPEN FOR COLLABS
             </div>
             <h1 className="pixel text-[22px] leading-[1.35] sm:text-3xl md:text-5xl md:leading-[1.3] mb-5 sm:mb-6 break-words">
               CRYPTO KOL.<br />
