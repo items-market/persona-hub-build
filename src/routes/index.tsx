@@ -246,7 +246,7 @@ function Index() {
 
       {/* ABOUT */}
       <section id="about" className="relative border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16">
+        <div ref={aboutReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-[1fr_1.6fr] gap-10 md:gap-16 transition-all duration-700 ${aboutReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div>
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// About</div>
             <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl leading-tight">
@@ -272,7 +272,7 @@ function Index() {
 
       {/* SERVICES */}
       <section id="services" className="relative border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div ref={servicesReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${servicesReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 sm:mb-14">
             <div>
               <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Services</div>
@@ -286,7 +286,8 @@ function Index() {
             {services.map((s, i) => (
               <article
                 key={s.title}
-                className="group relative rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6 sm:p-7 overflow-hidden hover:border-accent-1/40 hover:-translate-y-1 transition-all"
+                className="group relative rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6 sm:p-7 overflow-hidden hover:border-accent-1/40 hover:-translate-y-1 transition-all duration-300"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-1/10 via-transparent to-accent-2/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
@@ -307,14 +308,14 @@ function Index() {
 
       {/* VERTICALS */}
       <section id="verticals" className="relative border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div ref={verticalsReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${verticalsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="text-center mb-10 sm:mb-14">
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Coverage</div>
             <h2 className="mt-3 font-display font-semibold text-3xl sm:text-4xl">Verticals I cover</h2>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-            {verticals.map((v) => (
-              <div key={v.name} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:bg-white/[0.06] hover:border-accent-1/30 transition-colors">
+            {verticals.map((v, i) => (
+              <div key={v.name} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 hover:bg-white/[0.06] hover:border-accent-1/30 hover:-translate-y-0.5 transition-all duration-300" style={{ transitionDelay: `${i * 40}ms` }}>
                 <div className="font-display font-semibold text-lg text-fg">{v.name}</div>
                 <p className="mt-1.5 text-sm text-fg/60 leading-relaxed">{v.desc}</p>
               </div>
@@ -322,8 +323,8 @@ function Index() {
           </div>
 
           <div className="mt-14 grid md:grid-cols-3 gap-3 sm:gap-4">
-            {testimonials.map((t) => (
-              <figure key={t.who} className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6">
+            {testimonials.map((t, i) => (
+              <figure key={t.who} className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6 hover:border-accent-1/30 transition-all duration-300" style={{ transitionDelay: `${i * 80}ms` }}>
                 <div className="text-accent-1 text-2xl leading-none">"</div>
                 <blockquote className="mt-2 text-fg/80 text-sm sm:text-base leading-relaxed">{t.quote}</blockquote>
                 <figcaption className="mt-4 text-xs font-mono uppercase tracking-wider text-fg/50">— {t.who}</figcaption>
@@ -335,11 +336,11 @@ function Index() {
 
       {/* CONTACT */}
       <section id="contact" className="relative border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div ref={contactReveal.ref} className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 transition-all duration-700 ${contactReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="relative rounded-3xl border border-white/10 bg-card/60 backdrop-blur-xl p-8 sm:p-14 overflow-hidden">
             <div className="absolute inset-0 -z-0 opacity-60">
-              <div className="absolute -top-20 left-1/4 h-64 w-64 rounded-full bg-accent-1/30 blur-3xl" />
-              <div className="absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-accent-2/30 blur-3xl" />
+              <div className="absolute -top-20 left-1/4 h-64 w-64 rounded-full bg-accent-1/30 blur-3xl animate-pulse" />
+              <div className="absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-accent-2/30 blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
             </div>
             <div className="relative text-center max-w-2xl mx-auto">
               <div className="text-xs font-mono uppercase tracking-[0.2em] text-accent-1">// Let's talk</div>
@@ -351,13 +352,14 @@ function Index() {
               </p>
             </div>
             <div className="relative mt-10 grid sm:grid-cols-3 gap-3 sm:gap-4">
-              {links.map((l) => (
+              {links.map((l, i) => (
                 <a
                   key={l.label}
                   href={l.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-bg/40 hover:bg-bg/70 hover:border-accent-1/40 p-5 transition-all"
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-bg/40 hover:bg-bg/70 hover:border-accent-1/40 hover:-translate-y-0.5 p-5 transition-all duration-300"
+                  style={{ transitionDelay: `${i * 60}ms` }}
                 >
                   <div className="min-w-0">
                     <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-fg/50">{l.label}</div>
