@@ -218,7 +218,7 @@ function Index() {
             </div>
             <h1 className="font-display text-[clamp(1.7rem,5vw,3rem)] lg:text-[clamp(2.2rem,4.2vw,3.6rem)] leading-[1.15]">
               I GROW<br />
-              <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle" key={wordIdx}>
+              <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle animate-glitch" key={wordIdx}>
                 {words[wordIdx]}
               </span><br />
               PROJECTS<span className="animate-blink text-accent-3">_</span>
