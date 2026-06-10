@@ -102,6 +102,23 @@ function Index() {
         )}
       </header>
 
+      {/* MARQUEE TICKER */}
+      <div className="bg-fg text-card border-b-[3px] border-fg overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap font-display text-[10px] sm:text-xs py-2">
+          {Array.from({ length: 2 }).map((_, k) => (
+            <span key={k} className="flex shrink-0 items-center">
+              {["► THREADS", "★ RAIDS", "◇ SPACES", "▲ LAUNCHES", "● COMMUNITY", "■ NARRATIVE", "✦ HOLDERS", "◎ TRUST"].map((t) => (
+                <span key={t + k} className="mx-6 flex items-center gap-3">
+                  <span className="text-accent-1">{t}</span>
+                  <span className="text-accent-3">/</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+
+
       {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         {/* floating dots */}
