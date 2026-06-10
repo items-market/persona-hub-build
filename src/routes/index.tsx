@@ -252,13 +252,15 @@ function Index() {
               </div>
               {/* image */}
               <div className="relative bg-bg p-3">
-                <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
+                <div className="scanlines border-[3px] border-fg">
+                  <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto" />
+                </div>
               </div>
               {/* chips row */}
               <div className="grid grid-cols-3 gap-2 p-3 pt-0">
-                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">REACH</span>
-                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">TRUST</span>
-                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">SIGNAL</span>
+                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel">REACH</span>
+                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel" style={{ animationDelay: "0.4s" }}>TRUST</span>
+                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel" style={{ animationDelay: "0.8s" }}>SIGNAL</span>
               </div>
               {/* footer */}
               <div className="flex items-center justify-between px-3 py-2 border-t-[3px] border-fg bg-card">
