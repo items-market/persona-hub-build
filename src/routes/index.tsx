@@ -30,10 +30,10 @@ const PROFILE = {
 };
 
 const services = [
-  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦", color: "bg-accent-1" },
-  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "⚡", color: "bg-accent-2" },
-  { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "◎", color: "bg-accent-3 text-card" },
-  { title: "Launch Support",   desc: "End-to-end web3 growth rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "☄", color: "bg-card" },
+  { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "threads", color: "bg-accent-1" },
+  { title: "Community Raids",  desc: "Coordinated engagement across X and Telegram to push your TGE, mainnet, or milestone to the top of the timeline.", icon: "raids", color: "bg-accent-2" },
+  { title: "Spaces & AMAs",    desc: "Hosted Spaces and partner AMAs with founders — turning attention into trust and trust into holders.", icon: "spaces", color: "bg-accent-3 text-card" },
+  { title: "Launch Support",   desc: "End-to-end web3 growth rounds: positioning, content calendar, and a vetted creator network to amplify day-one.", icon: "launch", color: "bg-card" },
 ];
 
 const verticals = [
