@@ -90,73 +90,14 @@
     60%  { opacity: 1; clip-path: inset(0 0 0 0); }
     100% { opacity: 1; transform: translateY(0) scale(1); clip-path: inset(0 0 0 0); }
   }
-  @keyframes slide-in-left {
-    0% { opacity: 0; transform: translateX(-32px); clip-path: inset(0 100% 0 0); }
-    60% { opacity: 1; clip-path: inset(0 0 0 0); }
-    100% { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
-  }
-  @keyframes slide-in-right {
-    0% { opacity: 0; transform: translateX(32px); clip-path: inset(0 0 0 100%); }
-    60% { opacity: 1; clip-path: inset(0 0 0 0); }
-    100% { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
-  }
-  @keyframes pop-in {
-    0% { opacity: 0; transform: scale(0.6); }
-    60% { opacity: 1; transform: scale(1.1); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-  @keyframes glitch {
-    0%,90%,100% { transform: translate(0,0); text-shadow: 0 0 var(--fg); }
-    92% { transform: translate(-2px,1px); text-shadow: 2px 0 var(--accent-2), -2px 0 var(--accent-3); }
-    94% { transform: translate(2px,-1px); text-shadow: -2px 0 var(--accent-2), 2px 0 var(--accent-3); }
-    96% { transform: translate(-1px,-1px); text-shadow: 1px 0 var(--accent-1); }
-    98% { transform: translate(1px,1px); text-shadow: 0 0 var(--fg); }
-  }
-  @keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
-  @keyframes pulse-pixel {
-    0%,100% { box-shadow: 3px 3px 0 0 var(--fg); transform: translate(0,0); }
-    50% { box-shadow: 5px 5px 0 0 var(--fg); transform: translate(-1px,-1px); }
-  }
-  @keyframes shake {
-    0%,100% { transform: translate(0,0); }
-    20% { transform: translate(-2px,1px); }
-    40% { transform: translate(2px,-1px); }
-    60% { transform: translate(-1px,-1px); }
-    80% { transform: translate(1px,2px); }
-  }
   .animate-float  { animation: float-y 2.4s steps(4) infinite; }
   .animate-blink  { animation: blink 1s steps(1) infinite; }
   .animate-wiggle { animation: wiggle 0.5s steps(2) infinite; display: inline-block; }
   .animate-marquee{ animation: marquee 22s linear infinite; }
   .animate-spin-slow { animation: spin-slow 8s steps(8) infinite; }
-  .animate-glitch { animation: glitch 4s steps(1) infinite; }
-  .animate-pulse-pixel { animation: pulse-pixel 1.6s steps(2) infinite; }
 
   .reveal { opacity: 0; transform: translateY(18px); will-change: transform, opacity; }
   .reveal.is-visible { animation: pixel-in 0.55s steps(6) both; }
-  .reveal-left { opacity: 0; transform: translateX(-32px); }
-  .reveal-left.is-visible { animation: slide-in-left 0.6s steps(6) both; }
-  .reveal-right { opacity: 0; transform: translateX(32px); }
-  .reveal-right.is-visible { animation: slide-in-right 0.6s steps(6) both; }
-  .reveal-pop { opacity: 0; transform: scale(0.6); }
-  .reveal-pop.is-visible { animation: pop-in 0.5s steps(5) both; }
-
-  .scanlines { position: relative; }
-  .scanlines::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background: repeating-linear-gradient(0deg, transparent 0 3px, color-mix(in oklab, var(--fg) 14%, transparent) 3px 4px);
-  }
-  .scanlines::after {
-    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40%; pointer-events: none; z-index: 3;
-    background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--card) 45%, transparent), transparent);
-    animation: scan 3.2s steps(8) infinite;
-  }
-
-  .shake-hover { transition: transform 80ms steps(2); }
-  .shake-hover:hover { animation: shake 0.3s steps(4) infinite; }
 
   .hover-pixel { transition: transform 120ms steps(2), box-shadow 120ms steps(2); }
   .hover-pixel:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 0 var(--fg); }
@@ -167,12 +108,7 @@
   .press-pixel:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 0 var(--fg); }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .reveal.is-visible,
-    .reveal-left, .reveal-left.is-visible,
-    .reveal-right, .reveal-right.is-visible,
-    .reveal-pop, .reveal-pop.is-visible { opacity: 1; transform: none; animation: none; }
-    .animate-float, .animate-wiggle, .animate-marquee, .animate-spin-slow,
-    .animate-glitch, .animate-pulse-pixel { animation: none; }
-    .scanlines::after { animation: none; }
+    .reveal, .reveal.is-visible { opacity: 1; transform: none; animation: none; }
+    .animate-float, .animate-wiggle, .animate-marquee, .animate-spin-slow { animation: none; }
   }
 }
