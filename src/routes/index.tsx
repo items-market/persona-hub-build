@@ -197,14 +197,6 @@ function Index() {
                 Work with me
               </a>
             </div>
-            <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-              {stats.map((s) => (
-                <div key={s.k} className="rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-3.5 hover:border-accent-1/40 transition-colors">
-                  <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-fg/50">{s.k}</dt>
-                  <dd className="mt-1 font-display font-semibold text-base sm:text-lg text-fg">{s.v}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
 
           {/* avatar card with tilt */}
@@ -221,25 +213,25 @@ function Index() {
                     alt="Zane @0xZane_ profile"
                     className="w-full h-auto block"
                   />
-                  <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-bg/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-fg/90 border border-white/10">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent-2 animate-pulse" />
-                    LIVE
-                  </div>
-                  <div className="absolute top-3 right-3 rounded-full bg-accent-1 text-bg px-2.5 py-1 text-[10px] font-semibold">
-                    ✓ Verified
-                  </div>
+                <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-bg/80 backdrop-blur px-2.5 py-1 text-[10px] font-mono text-fg/90 border border-white/10">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-2 animate-pulse" />
+                  LIVE
                 </div>
-                <div className="mt-3 flex items-center justify-between px-1.5">
-                  <div className="min-w-0">
-                    <div className="font-display font-semibold text-sm truncate">{PROFILE.name}</div>
-                    <div className="text-xs text-fg/50 truncate">{PROFILE.handle}</div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <div className="font-mono text-sm text-accent-1">{PROFILE.followers}</div>
-                    <div className="text-[10px] uppercase tracking-wider text-fg/40">Followers</div>
-                  </div>
+                <div className="absolute top-3 right-3 rounded-full bg-accent-1 text-bg px-2.5 py-1 text-[10px] font-semibold">
+                  ✓ Verified
                 </div>
               </div>
+              <div className="mt-3 flex items-center justify-between px-1.5">
+                <div className="min-w-0">
+                  <div className="font-display font-semibold text-sm truncate">{PROFILE.name}</div>
+                  <div className="text-xs text-fg/50 truncate">{PROFILE.handle}</div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="font-mono text-sm text-accent-1">KOL</div>
+                  <div className="text-[10px] uppercase tracking-wider text-fg/40">Web3 Growth</div>
+                </div>
+              </div>
+            </div>
               {/* floating chips */}
               <div className="absolute -top-3 -right-3 rounded-full bg-card border border-white/10 px-3 py-1.5 text-[11px] font-mono text-accent-3 shadow-lg animate-float">
                 #web3
