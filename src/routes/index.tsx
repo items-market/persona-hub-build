@@ -48,7 +48,6 @@ const verticals = [
 const links = [
   { label: "X / TWITTER", handle: "@0xZane_",       href: "https://x.com/0xZane_",  color: "bg-accent-1" },
   { label: "TELEGRAM",    handle: "@Hey_Zane",      href: "https://t.me/Hey_Zane",   color: "bg-accent-2" },
-  { label: "EMAIL",       handle: "heyzane1337@gmail.com",   href: "mailto:heyzane1337@gmail.com",    color: "bg-accent-3 text-card" },
 ];
 
 function PixelIcon({ type }: { type: string }) {
