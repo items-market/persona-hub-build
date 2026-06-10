@@ -85,9 +85,30 @@
   @keyframes wiggle  { 0%,100%{transform:translate(0,0) rotate(-1deg)} 25%{transform:translate(1px,-1px) rotate(1deg)} 50%{transform:translate(-1px,1px) rotate(-1deg)} 75%{transform:translate(1px,1px) rotate(1deg)} }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
   @keyframes spin-slow { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+  @keyframes pixel-in {
+    0%   { opacity: 0; transform: translateY(18px) scale(0.96); clip-path: inset(0 0 100% 0); }
+    60%  { opacity: 1; clip-path: inset(0 0 0 0); }
+    100% { opacity: 1; transform: translateY(0) scale(1); clip-path: inset(0 0 0 0); }
+  }
   .animate-float  { animation: float-y 2.4s steps(4) infinite; }
   .animate-blink  { animation: blink 1s steps(1) infinite; }
   .animate-wiggle { animation: wiggle 0.5s steps(2) infinite; display: inline-block; }
   .animate-marquee{ animation: marquee 22s linear infinite; }
   .animate-spin-slow { animation: spin-slow 8s steps(8) infinite; }
+
+  .reveal { opacity: 0; transform: translateY(18px); will-change: transform, opacity; }
+  .reveal.is-visible { animation: pixel-in 0.55s steps(6) both; }
+
+  .hover-pixel { transition: transform 120ms steps(2), box-shadow 120ms steps(2); }
+  .hover-pixel:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 0 var(--fg); }
+  .hover-pixel:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--fg); }
+
+  .press-pixel { transition: transform 120ms steps(2), box-shadow 120ms steps(2); }
+  .press-pixel:hover { transform: translate(-1px, -1px); box-shadow: 8px 8px 0 0 var(--fg); }
+  .press-pixel:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 0 var(--fg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.is-visible { opacity: 1; transform: none; animation: none; }
+    .animate-float, .animate-wiggle, .animate-marquee, .animate-spin-slow { animation: none; }
+  }
 }
