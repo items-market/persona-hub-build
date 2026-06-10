@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import zaneAvatar from "@/assets/zane.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -53,6 +53,12 @@ const links = [
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const words = ["WEB3", "RWAs", "AI×CRYPTO", "L2s", "DEFI"];
+  const [wordIdx, setWordIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setWordIdx((i) => (i + 1) % words.length), 1500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden">
@@ -96,6 +102,23 @@ function Index() {
         )}
       </header>
 
+      {/* MARQUEE TICKER */}
+      <div className="bg-fg text-card border-b-[3px] border-fg overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap font-display text-[10px] sm:text-xs py-2">
+          {Array.from({ length: 2 }).map((_, k) => (
+            <span key={k} className="flex shrink-0 items-center">
+              {["► THREADS", "★ RAIDS", "◇ SPACES", "▲ LAUNCHES", "● COMMUNITY", "■ NARRATIVE", "✦ HOLDERS", "◎ TRUST"].map((t) => (
+                <span key={t + k} className="mx-6 flex items-center gap-3">
+                  <span className="text-accent-1">{t}</span>
+                  <span className="text-accent-3">/</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+
+
       {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         {/* floating dots */}
@@ -113,10 +136,12 @@ function Index() {
               <span className="h-2 w-2 bg-accent-2 animate-blink" />
               ► ONLINE · OPEN FOR COLLABS
             </div>
-            <h1 className="font-display text-[clamp(1.6rem,6vw,3.25rem)] leading-[1.15]">
-              CRYPTO KOL.<br />
-              <span className="text-accent-3">I GROW WEB3</span><br />
-              PROJECTS.
+            <h1 className="font-display text-[clamp(1.7rem,6.2vw,3.4rem)] leading-[1.15]">
+              I GROW<br />
+              <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle" key={wordIdx}>
+                {words[wordIdx]}
+              </span><br />
+              PROJECTS<span className="animate-blink text-accent-3">_</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg sm:text-xl leading-snug">
               {PROFILE.bio}. I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
