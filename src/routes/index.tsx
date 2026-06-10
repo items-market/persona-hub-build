@@ -218,7 +218,7 @@ function Index() {
             </div>
             <h1 className="font-display text-[clamp(1.7rem,5vw,3rem)] lg:text-[clamp(2.2rem,4.2vw,3.6rem)] leading-[1.15]">
               I GROW<br />
-              <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle" key={wordIdx}>
+              <span className="inline-block bg-accent-3 text-card px-2 border-[3px] border-fg shadow-[5px_5px_0_0_var(--color-fg)] animate-wiggle animate-glitch" key={wordIdx}>
                 {words[wordIdx]}
               </span><br />
               PROJECTS<span className="animate-blink text-accent-3">_</span>
@@ -252,13 +252,15 @@ function Index() {
               </div>
               {/* image */}
               <div className="relative bg-bg p-3">
-                <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
+                <div className="scanlines border-[3px] border-fg">
+                  <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto" />
+                </div>
               </div>
               {/* chips row */}
               <div className="grid grid-cols-3 gap-2 p-3 pt-0">
-                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">REACH</span>
-                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">TRUST</span>
-                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3">SIGNAL</span>
+                <span className="bg-accent-2 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel">REACH</span>
+                <span className="bg-accent-1 border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel" style={{ animationDelay: "0.4s" }}>TRUST</span>
+                <span className="bg-accent-3 text-card border-[3px] border-fg text-center font-display text-[10px] lg:text-xs py-2 lg:py-3 animate-pulse-pixel" style={{ animationDelay: "0.8s" }}>SIGNAL</span>
               </div>
               {/* footer */}
               <div className="flex items-center justify-between px-3 py-2 border-t-[3px] border-fg bg-card">
@@ -270,14 +272,30 @@ function Index() {
         </div>
       </section>
 
+      {/* MARQUEE TICKER */}
+      <div className="bg-fg text-card border-y-[3px] border-fg overflow-hidden py-3">
+        <div className="flex whitespace-nowrap animate-marquee font-display text-xs sm:text-sm">
+          {Array.from({ length: 2 }).map((_, j) => (
+            <div key={j} className="flex shrink-0">
+              {["► THREADS", "★ RAIDS", "◆ SPACES", "▲ LAUNCHES", "● COMMUNITY", "✦ INFLUENCE", "► TRUST", "★ SIGNAL"].map((t, i) => (
+                <span key={`${j}-${i}`} className="px-6 flex items-center gap-3">
+                  <span className="text-accent-1">{t}</span>
+                  <span className="text-accent-3">//</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ABOUT — cream band */}
       <section id="about" className="bg-cream border-y-[3px] border-fg">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16 lg:gap-24">
-          <div className="reveal">
+          <div className="reveal-left">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// ABOUT</div>
             <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight">WHO IS<br />ZANE?</h2>
           </div>
-          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug reveal" data-reveal-delay="150ms">
+          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug reveal-right" data-reveal-delay="150ms">
             <p>
               I'm <span className="hl-yellow font-mono">Zane</span> — a{" "}
               <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
@@ -332,7 +350,7 @@ function Index() {
             {verticals.map((v, i) => (
               <div
                 key={v.name}
-                className="pixel-box-sm hover-pixel p-5 lg:p-6 reveal hover:bg-accent-1"
+                className="pixel-box-sm hover-pixel p-5 lg:p-6 reveal-pop hover:bg-accent-1"
                 data-reveal-delay={`${i * 70}ms`}
               >
                 <div className="font-display text-sm lg:text-base text-accent-3">{v.name}</div>
