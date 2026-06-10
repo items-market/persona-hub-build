@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export function useReveal() {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const els = document.querySelectorAll<HTMLElement>(".reveal, .reveal-left, .reveal-right, .reveal-pop");
     if (!els.length) return;
 
     if (!("IntersectionObserver" in window)) {
