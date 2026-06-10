@@ -27,15 +27,7 @@ const PROFILE = {
   name: "ZANE",
   handle: "@0xZane_",
   bio: "tech enthusiast · fulltimeonweb3 · vibe coder",
-  followers: "14.6K",
 };
-
-const stats = [
-  { k: "Followers", v: "14.6K" },
-  { k: "Projects", v: "20+" },
-  { k: "Verticals", v: "RWA · AI · L2" },
-  { k: "Status", v: "Verified" },
-];
 
 const services = [
   { title: "Thread Campaigns", desc: "Narrative-driven threads that explain your protocol in plain language and convert lurkers into believers.", icon: "✦" },
@@ -65,11 +57,32 @@ const links = [
   { label: "Email", handle: "gm@zane.web3", href: "mailto:gm@zane.web3" },
 ];
 
+function useScrollReveal(threshold = 0.12) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); io.unobserve(el); } },
+      { threshold }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const heroReveal = useScrollReveal(0.05);
+  const aboutReveal = useScrollReveal();
+  const servicesReveal = useScrollReveal();
+  const verticalsReveal = useScrollReveal();
+  const contactReveal = useScrollReveal();
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
