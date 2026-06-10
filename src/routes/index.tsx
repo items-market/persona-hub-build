@@ -227,8 +227,8 @@ function Index() {
                   <div className="text-xs text-fg/50 truncate">{PROFILE.handle}</div>
                 </div>
                 <div className="text-right shrink-0">
-                  <div className="font-mono text-sm text-accent-1">KOL</div>
-                  <div className="text-[10px] uppercase tracking-wider text-fg/40">Web3 Growth</div>
+                  <div className="font-mono text-sm text-accent-1">Growth</div>
+                  <div className="text-[10px] uppercase tracking-wider text-fg/40">Partner</div>
                 </div>
               </div>
             </div>
@@ -322,15 +322,6 @@ function Index() {
             ))}
           </div>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-3 sm:gap-4">
-            {testimonials.map((t, i) => (
-              <figure key={t.who} className="rounded-2xl border border-white/10 bg-card/60 backdrop-blur-sm p-6 hover:border-accent-1/30 transition-all duration-300" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="text-accent-1 text-2xl leading-none">"</div>
-                <blockquote className="mt-2 text-fg/80 text-sm sm:text-base leading-relaxed">{t.quote}</blockquote>
-                <figcaption className="mt-4 text-xs font-mono uppercase tracking-wider text-fg/50">— {t.who}</figcaption>
-              </figure>
-            ))}
-          </div>
         </div>
       </section>
 
