@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactElement } from "react";
 import zaneAvatar from "@/assets/zane.jpg.asset.json";
+import { useReveal } from "@/hooks/useReveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -152,6 +153,7 @@ function Index() {
     const id = setInterval(() => setWordIdx((i) => (i + 1) % words.length), 1500);
     return () => clearInterval(id);
   }, []);
+  useReveal();
 
   return (
     <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden">
@@ -224,21 +226,21 @@ function Index() {
             <p className="mt-6 max-w-xl lg:max-w-2xl text-lg sm:text-xl lg:text-2xl leading-snug">
               I help builders win attention, trust, and real holders — through threads, raids, Spaces, and a community that actually shows up.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 reveal" data-reveal-delay="200ms">
               <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer"
-                className="font-display text-xs sm:text-sm lg:text-base bg-accent-3 text-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                className="press-pixel font-display text-xs sm:text-sm lg:text-base bg-accent-3 text-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)]">
                 ► FOLLOW ME
               </a>
               <a href="#contact"
-                className="font-display text-xs sm:text-sm lg:text-base bg-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)] hover:shadow-[2px_2px_0_0_var(--color-fg)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                className="press-pixel font-display text-xs sm:text-sm lg:text-base bg-card px-5 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 border-[3px] border-fg shadow-[6px_6px_0_0_var(--color-fg)]">
                 WORK WITH ME
               </a>
             </div>
           </div>
 
           {/* avatar window */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="w-[min(86vw,360px)] lg:w-[min(90vw,420px)] xl:w-[min(92vw,480px)] pixel-box p-0">
+          <div className="order-1 md:order-2 flex justify-center md:justify-end reveal" data-reveal-delay="100ms">
+            <div className="w-[min(86vw,360px)] lg:w-[min(90vw,420px)] xl:w-[min(92vw,480px)] pixel-box p-0 hover-pixel">
               {/* window chrome */}
               <div className="flex items-center justify-between gap-3 px-3 py-2 border-b-[3px] border-fg bg-card">
                 <span className="font-mono text-sm lg:text-base">ZANE.PNG</span>
@@ -271,11 +273,11 @@ function Index() {
       {/* ABOUT — cream band */}
       <section id="about" className="bg-cream border-y-[3px] border-fg">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-16 sm:py-24 lg:py-32 grid md:grid-cols-[1fr_1.7fr] gap-10 md:gap-16 lg:gap-24">
-          <div>
+          <div className="reveal">
             <div className="inline-block bg-fg text-card font-display text-[10px] px-3 py-2 border-[3px] border-fg">// ABOUT</div>
             <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl leading-tight">WHO IS<br />ZANE?</h2>
           </div>
-          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug">
+          <div className="space-y-5 lg:space-y-7 text-lg sm:text-xl lg:text-2xl leading-snug reveal" data-reveal-delay="150ms">
             <p>
               I'm <span className="hl-yellow font-mono">Zane</span> — a{" "}
               <span className="hl-green font-mono">web3 growth partner on X</span> covering web3, RWAs, AI×crypto, security, and yield.
@@ -300,10 +302,16 @@ function Index() {
           </div>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-7">
             {services.map((s, i) => (
-              <article key={s.title} className="pixel-box p-5 sm:p-6 lg:p-8 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+              <article
+                key={s.title}
+                className="pixel-box hover-pixel p-5 sm:p-6 lg:p-8 reveal group"
+                data-reveal-delay={`${i * 90}ms`}
+              >
                 <div className="flex items-center justify-between mb-4">
-                  <PixelIcon type={s.icon} />
-                  <span className="font-display text-xs opacity-60">0{i + 1}</span>
+                  <span className="transition-transform duration-150 group-hover:rotate-[-6deg] group-hover:scale-110">
+                    <PixelIcon type={s.icon} />
+                  </span>
+                  <span className="font-display text-xs opacity-60 group-hover:opacity-100 group-hover:text-accent-3 transition">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-sm sm:text-base lg:text-lg mb-3">{s.title.toUpperCase()}</h3>
                 <p className="text-lg lg:text-xl leading-snug">{s.desc}</p>
@@ -321,8 +329,12 @@ function Index() {
             <h2 className="mt-5 font-display text-2xl sm:text-3xl lg:text-4xl">VERTICALS I COVER</h2>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-5">
-            {verticals.map((v) => (
-              <div key={v.name} className="pixel-box-sm p-5 lg:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
+            {verticals.map((v, i) => (
+              <div
+                key={v.name}
+                className="pixel-box-sm hover-pixel p-5 lg:p-6 reveal hover:bg-accent-1"
+                data-reveal-delay={`${i * 70}ms`}
+              >
                 <div className="font-display text-sm lg:text-base text-accent-3">{v.name}</div>
                 <p className="mt-2 text-lg lg:text-xl leading-snug">{v.desc}</p>
               </div>
@@ -344,11 +356,14 @@ function Index() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-5 lg:gap-7 max-w-2xl lg:max-w-3xl mx-auto">
-            {links.map((l) => (
+            {links.map((l, i) => (
               <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
-                className={`pixel-box p-5 lg:p-7 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150 ${l.color} w-full sm:w-auto lg:w-[260px]`}>
+                className={`pixel-box hover-pixel p-5 lg:p-7 reveal group ${l.color} w-full sm:w-auto lg:w-[260px]`}
+                data-reveal-delay={`${i * 120}ms`}>
                 <div className="font-display text-[10px] lg:text-xs">{l.label}</div>
-                <div className="mt-3 font-mono text-xl lg:text-2xl truncate">{l.handle} →</div>
+                <div className="mt-3 font-mono text-xl lg:text-2xl truncate">
+                  {l.handle} <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">→</span>
+                </div>
               </a>
             ))}
           </div>
