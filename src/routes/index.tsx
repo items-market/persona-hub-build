@@ -80,17 +80,8 @@ function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-sky scanlines overflow-x-hidden">
-      {/* TICKER */}
-      <div className="border-b-4 border-foreground bg-foreground text-background overflow-hidden">
-        <div className="flex anim-ticker whitespace-nowrap py-2 pixel text-[9px] sm:text-[10px] md:text-xs">
-          {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
-            <span key={i} className="px-4 sm:px-6 flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-accent shrink-0" /> {t}
-            </span>
-          ))}
-        </div>
-      </div>
+    <div className="min-h-screen w-full bg-sky overflow-x-hidden">
+
 
       {/* NAV */}
       <header className="border-b-4 border-foreground bg-coin sticky top-0 z-40">
@@ -102,7 +93,7 @@ function Index() {
           <nav className="hidden md:flex items-center gap-6 pixel text-[10px]">
             <a href="#about" className="hover:text-hot transition-colors">ABOUT</a>
             <a href="#services" className="hover:text-hot transition-colors">SERVICES</a>
-            <a href="#posts" className="hover:text-hot transition-colors">POSTS</a>
+            
             <a href="#projects" className="hover:text-hot transition-colors">PROJECTS</a>
             <a href="#contact" className="hover:text-hot transition-colors">CONTACT</a>
           </nav>
