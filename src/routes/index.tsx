@@ -51,6 +51,68 @@ const links = [
   { label: "EMAIL",       handle: "gm@zane.web3",   href: "mailto:gm@zane.web3",    color: "bg-accent-3 text-card" },
 ];
 
+function PixelIcon({ type }: { type: string }) {
+  const fill = "currentColor";
+  const off = "transparent";
+  if (type === "threads") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="2" y="1" width="12" height="14" fill={fill} />
+        <rect x="3" y="2" width="10" height="12" fill={off} />
+        <rect x="4" y="3" width="8" height="1" fill={fill} />
+        <rect x="4" y="5" width="6" height="1" fill={fill} />
+        <rect x="4" y="7" width="8" height="1" fill={fill} />
+        <rect x="4" y="9" width="5" height="1" fill={fill} />
+        <rect x="4" y="11" width="7" height="1" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "raids") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="7" y="1" width="2" height="3" fill={fill} />
+        <rect x="5" y="3" width="6" height="2" fill={fill} />
+        <rect x="3" y="5" width="10" height="2" fill={fill} />
+        <rect x="5" y="7" width="2" height="2" fill={fill} />
+        <rect x="9" y="7" width="2" height="2" fill={fill} />
+        <rect x="7" y="9" width="2" height="2" fill={fill} />
+        <rect x="4" y="11" width="8" height="2" fill={fill} />
+        <rect x="3" y="13" width="10" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "spaces") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="6" y="1" width="4" height="2" fill={fill} />
+        <rect x="5" y="3" width="6" height="1" fill={fill} />
+        <rect x="4" y="4" width="8" height="2" fill={fill} />
+        <rect x="3" y="6" width="10" height="4" fill={fill} />
+        <rect x="4" y="10" width="8" height="2" fill={fill} />
+        <rect x="5" y="12" width="6" height="1" fill={fill} />
+        <rect x="6" y="13" width="4" height="1" fill={fill} />
+        <rect x="7" y="14" width="2" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  if (type === "launch") {
+    return (
+      <svg viewBox="0 0 16 16" className="h-8 w-8 sm:h-10 sm:w-10" shapeRendering="crispEdges">
+        <rect x="7" y="1" width="2" height="2" fill={fill} />
+        <rect x="6" y="3" width="4" height="2" fill={fill} />
+        <rect x="5" y="5" width="6" height="4" fill={fill} />
+        <rect x="6" y="9" width="1" height="3" fill={fill} />
+        <rect x="9" y="9" width="1" height="3" fill={fill} />
+        <rect x="5" y="12" width="2" height="2" fill={fill} />
+        <rect x="9" y="12" width="2" height="2" fill={fill} />
+        <rect x="4" y="14" width="2" height="2" fill={fill} />
+        <rect x="10" y="14" width="2" height="2" fill={fill} />
+      </svg>
+    );
+  }
+  return null;
+}
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const words = ["WEB3", "RWAs", "AI×CRYPTO", "L2s", "DEFI"];
