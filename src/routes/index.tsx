@@ -32,15 +32,6 @@ const PROFILE = {
   verified: true,
 };
 
-const ticker = [
-  "★ BOOKING WEB3 CAMPAIGNS",
-  "GM ☀️",
-  "FULLTIME ON WEB3",
-  "VIBE CODER",
-  "DM OPEN FOR COLLABS",
-  "★ REAL HOLDERS · REAL REACH",
-  "@0xZane_",
-];
 
 const stats = [
   { k: "FOLLOWERS", v: "14.6K" },
@@ -65,43 +56,6 @@ const covered = [
   { name: "9SUMMITS", tag: "Curated risk-adjusted vaults" },
 ];
 
-const posts = [
-  {
-    url: "https://x.com/0xZane_/status/2064686365091274831",
-    date: "JUN 10 · 2026",
-    text: "The @flintrwa is live on @lagoon_finance. Dive into real estate-backed opportunities with just USDC. ~10% target APR, weekly distributions, ERC-7540 infra, Merkl boosts. $495.36K already in — no middlemen, just bricks on the blockchain.",
-    likes: 37,
-    tag: "RWA",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064591197914685722",
-    date: "JUN 10 · 2026",
-    text: "Quantum risk isn't sci-fi anymore. Even BlackRock's talking about it. @quipnetwork uses hybrid WOTS+ / SPHINCS+ aligned with NIST-PQC standards. For those securing billions, waiting isn't an option.",
-    likes: 144,
-    tag: "SECURITY",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064419604907385031",
-    date: "JUN 9 · 2026",
-    text: "Dreaming of the British Grand Prix? Swap $5k into AVLT via @alturax × Jumper — VIP Silverstone life, F1 stars, Fusion Lounge access. Lock $5k+ by Sunday for the snapshot.",
-    likes: 133,
-    tag: "CAMPAIGN",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064376596736405880",
-    date: "JUN 9 · 2026",
-    text: "AI changed personal productivity. Now think bigger: AI co-workers for whole companies. @workclaw — teammates with titles, 3,000+ integrations, runs inside Slack & Teams. 2026 is about who's got the best AI team.",
-    likes: 37,
-    tag: "AI x WEB3",
-  },
-  {
-    url: "https://x.com/0xZane_/status/2064363880487452930",
-    date: "JUN 9 · 2026",
-    text: "Altura Epoch 5 is up. 100,000 $AVLT reward pool on YieldRun. Deposit, earn yield on Hyperliquid strategies, climb the leaderboard. No constant managing — just stay active and track progress.",
-    likes: 28,
-    tag: "YIELD",
-  },
-];
 
 const testimonials = [
   { quote: "Brought us real holders, not bots. The thread alone moved volume.", who: "WEB3 FOUNDER" },
@@ -126,17 +80,8 @@ function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-sky scanlines overflow-x-hidden">
-      {/* TICKER */}
-      <div className="border-b-4 border-foreground bg-foreground text-background overflow-hidden">
-        <div className="flex anim-ticker whitespace-nowrap py-2 pixel text-[9px] sm:text-[10px] md:text-xs">
-          {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
-            <span key={i} className="px-4 sm:px-6 flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-accent shrink-0" /> {t}
-            </span>
-          ))}
-        </div>
-      </div>
+    <div className="min-h-screen w-full bg-sky overflow-x-hidden">
+
 
       {/* NAV */}
       <header className="border-b-4 border-foreground bg-coin sticky top-0 z-40">
@@ -148,7 +93,7 @@ function Index() {
           <nav className="hidden md:flex items-center gap-6 pixel text-[10px]">
             <a href="#about" className="hover:text-hot transition-colors">ABOUT</a>
             <a href="#services" className="hover:text-hot transition-colors">SERVICES</a>
-            <a href="#posts" className="hover:text-hot transition-colors">POSTS</a>
+            
             <a href="#projects" className="hover:text-hot transition-colors">PROJECTS</a>
             <a href="#contact" className="hover:text-hot transition-colors">CONTACT</a>
           </nav>
@@ -168,7 +113,7 @@ function Index() {
             {[
               ["ABOUT", "#about"],
               ["SERVICES", "#services"],
-              ["POSTS", "#posts"],
+              
               ["PROJECTS", "#projects"],
               ["CONTACT", "#contact"],
             ].map(([label, href]) => (
@@ -189,7 +134,7 @@ function Index() {
         <div className="max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 grid md:grid-cols-2 gap-8 md:gap-10 items-center relative">
           <div className="order-2 md:order-1">
             <div className="inline-block bg-foreground text-background pixel text-[9px] sm:text-[10px] px-3 py-2 mb-5 anim-blink">
-              ◆ ONLINE · BOOKING Q3
+              ◆ ONLINE · OPEN FOR COLLABS
             </div>
             <h1 className="pixel text-[22px] leading-[1.35] sm:text-3xl md:text-5xl md:leading-[1.3] mb-5 sm:mb-6 break-words">
               CRYPTO KOL.<br />
@@ -297,42 +242,11 @@ function Index() {
         </div>
       </section>
 
-      {/* RECENT POSTS */}
-      <section id="posts" className="border-y-4 border-foreground bg-foreground text-background">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
-          <div className="flex items-end justify-between mb-6 sm:mb-8 flex-wrap gap-4">
-            <div>
-              <div className="pixel text-[10px] bg-coin text-foreground inline-block px-3 py-2">// LATEST FROM X</div>
-              <h2 className="pixel text-lg sm:text-xl md:text-2xl mt-4">RECENT THREADS</h2>
-            </div>
-            <a href="https://x.com/0xZane_" target="_blank" rel="noreferrer" className="pixel text-[10px] bg-hot text-primary-foreground px-3 py-2 pixel-border-sm">SEE ALL ON X →</a>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-5">
-            {posts.map((p, i) => (
-              <a
-                key={p.url}
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
-                className={`block pixel-border p-5 sm:p-6 hover:-translate-y-1 active:translate-y-0 transition-transform text-foreground ${i % 3 === 0 ? "bg-coin" : i % 3 === 1 ? "bg-mint" : "bg-card"} ${i === posts.length - 1 ? "md:col-span-2" : ""}`}
-              >
-                <div className="flex items-start justify-between gap-3 mb-3 pixel text-[9px] sm:text-[10px]">
-                  <span className="bg-foreground text-background px-2 py-1">{p.tag}</span>
-                  <span className="truncate">{p.date}</span>
-                </div>
-                <p className="text-base sm:text-lg leading-snug">{p.text}</p>
-                <div className="mt-4 flex items-center justify-between pixel text-[9px] sm:text-[10px]">
-                  <span>♥ {p.likes} LIKES</span>
-                  <span>READ ON X →</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* PROJECTS COVERED */}
-      <section id="projects" className="bg-sky">
+      <section id="projects" className="border-y-4 border-foreground bg-sky">
         <div className="max-w-6xl mx-auto px-4 py-12 sm:py-14">
           <div className="text-center mb-8 sm:mb-10">
             <div className="pixel text-[10px] bg-foreground text-background inline-block px-3 py-2">// COVERED RECENTLY</div>
