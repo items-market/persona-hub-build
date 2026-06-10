@@ -100,19 +100,22 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden antialiased">
-      {/* ambient gradient orbs */}
+    <div className="min-h-screen w-full bg-bg text-fg font-sans overflow-x-hidden">
+      {/* CRT scanlines overlay */}
+      <div className="pointer-events-none fixed inset-0 z-50 scanlines opacity-30 mix-blend-overlay" />
+      {/* ambient pixel grid */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div
-          className="absolute -top-32 -left-32 h-[420px] w-[420px]  bg-accent-1/30 blur-none"
-          style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)` }}
+          className="absolute -top-32 -left-32 h-[420px] w-[420px] bg-accent-1/20"
+          style={{ transform: `translate3d(0, ${scrollY * 0.1}px, 0)`, clipPath: "polygon(0 0,100% 0,100% 88%,88% 100%,0 100%)" }}
         />
         <div
-          className="absolute top-[40%] -right-40 h-[520px] w-[520px]  bg-accent-2/25 blur-none"
-          style={{ transform: `translate3d(0, ${scrollY * -0.08}px, 0)` }}
+          className="absolute top-[40%] -right-40 h-[520px] w-[520px] bg-accent-2/15"
+          style={{ transform: `translate3d(0, ${scrollY * -0.08}px, 0)`, clipPath: "polygon(12% 0,100% 0,100% 100%,0 100%,0 12%)" }}
         />
-        <div className="absolute inset-0 grid-bg opacity-[0.18]" />
+        <div className="absolute inset-0 grid-bg opacity-40" />
       </div>
+
 
       {/* NAV */}
       <header className="sticky top-0 z-40  bg-bg/70 border-b border-white/5">
