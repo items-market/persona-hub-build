@@ -271,7 +271,7 @@ function Index() {
             {services.map((s, i) => (
               <article key={s.title} className="pixel-box p-5 sm:p-6 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_0_var(--color-fg)] transition-all duration-150">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-display text-3xl sm:text-4xl leading-none text-accent-3">{s.icon}</span>
+                  <PixelIcon type={s.icon} />
                   <span className="font-display text-xs opacity-60">0{i + 1}</span>
                 </div>
                 <h3 className="font-display text-sm sm:text-base mb-3">{s.title.toUpperCase()}</h3>
