@@ -350,7 +350,7 @@ function Index() {
             {verticals.map((v, i) => (
               <div
                 key={v.name}
-                className="pixel-box-sm hover-pixel p-5 lg:p-6 reveal hover:bg-accent-1"
+                className="pixel-box-sm hover-pixel p-5 lg:p-6 reveal-pop hover:bg-accent-1"
                 data-reveal-delay={`${i * 70}ms`}
               >
                 <div className="font-display text-sm lg:text-base text-accent-3">{v.name}</div>
