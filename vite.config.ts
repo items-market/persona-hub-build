@@ -12,4 +12,6 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Target Vercel when deploying there. Lovable's built-in hosting overrides this anyway.
+  nitro: { preset: "vercel" },
 });
