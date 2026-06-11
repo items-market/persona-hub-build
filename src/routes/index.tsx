@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactElement } from "react";
-import zaneAvatar from "@/assets/zane.jpg.asset.json";
+import zaneAvatar from "@/assets/zane-pixel.png";
 import { useReveal } from "@/hooks/useReveal";
 
 export const Route = createFileRoute("/")({
@@ -252,7 +252,7 @@ function Index() {
               </div>
               {/* image */}
               <div className="relative bg-bg p-3">
-                <img src={zaneAvatar.url} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
+                <img src={zaneAvatar} alt="Zane @0xZane_ pixel avatar" className="block w-full h-auto border-[3px] border-fg" />
               </div>
               {/* chips row */}
               <div className="grid grid-cols-3 gap-2 p-3 pt-0">
