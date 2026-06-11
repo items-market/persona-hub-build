@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactElement } from "react";
-import zaneAvatar from "@/assets/zane.jpg.asset.json";
+import zaneAvatar from "@/assets/zane-pixel.png";
 import { useReveal } from "@/hooks/useReveal";
 
 export const Route = createFileRoute("/")({
