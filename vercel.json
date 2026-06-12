@@ -1,12 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "/__l5e/assets-v1/:assetId/:file",
-      "destination": "/__l5e/assets-v1/:assetId/:file"
-    },
-    {
-      "source": "/__l5e/assets-v1/3504c2ae-65d9-42cf-8a6f-5d1b7cf376a2/zane-pixel.png",
-      "destination": "/zane-pixel.png"
-    }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "bun install",
+  "buildCommand": "bun run build"
 }
